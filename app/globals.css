@@ -5,7 +5,14 @@
   --success-light: hsl(155deg 77% 88%);
   --text-primary: hsl(215deg 14% 27%);
   --text-secondary: hsl(217deg 5% 50%);
-  --separator: 1px dotted hsl(0deg 0% 77%);
+  --divider: 1px dotted hsl(0deg 0% 77%);
+  --button-contained-bg: hsl(252deg 97% 66%);
+  --button-contained-bg-hover: hsl(252deg 82% 55%);
+  --button-contained-color: hsl(0deg 0% 100%);
+  --button-outlined-border: 1px solid hsl(0deg 0% 92%);
+  --button-outlined-border-hover: 1px solid hsl(0deg 2% 70%);
+  --button-outlined-bg: hsl(0deg 0% 100%);
+  --transition: 0.25s cubic-bezier(0.25, 0.75, 0.5, 1.25);
 }
 
 html {
@@ -20,6 +27,8 @@ body {
   font-size: 1em;
   line-height: 1.5;
 
+  background-color: var(--bg-color);
+
   -webkit-font-smoothing: antialiased;
 }
 
@@ -27,9 +36,9 @@ body {
 *::before,
 *::after {
   box-sizing: inherit;
-  font-size: inherit;
   margin: 0;
   padding: 0;
+  font-size: inherit;
 }
 
 :where(fieldset[class]) {

@@ -30,7 +30,6 @@
     "react-hooks/rules-of-hooks": "error",
     "react-hooks/exhaustive-deps": "warn",
     "react/prefer-stateless-function": "error",
-    "react/button-has-type": "error",
     "react/no-unused-prop-types": "error",
     "react/jsx-pascal-case": "error",
     "react/jsx-no-script-url": "error",
