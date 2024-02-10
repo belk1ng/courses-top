@@ -1,0 +1,16 @@
+.heading {
+  color: var(--text-primary);
+  font-weight: 500;
+}
+
+.heading--large {
+  font-size: 1.625em;
+}
+
+.heading--medium {
+  font-size: 1.375em;
+}
+
+.heading--small {
+  font-size: 1.25em;
+}

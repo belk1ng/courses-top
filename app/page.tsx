@@ -1,3 +1,5 @@
+import Heading from "@/components/heading";
+
 export const metadata = {
   title: "Тайтл первой страницы",
   description: "Описание первой страницы",
@@ -6,7 +8,7 @@ export const metadata = {
 const Home = () => {
   return (
     <main>
-      <h1>Hello world :)</h1>
+      <Heading as="h1">Hello world :)</Heading>
     </main>
   );
 };
