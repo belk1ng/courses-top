@@ -1,15 +1,18 @@
 .button {
+  cursor: pointer;
+
   display: inline-flex;
-  align-items: center;
   gap: 0.75em;
+  align-items: center;
+
+  padding: 0.5714em 1em;
+
   font-size: 0.875em;
   font-weight: 400;
-  padding: 0.5714em 1em;
+
   border: 0;
-  -webkit-border-radius: 0.3125em;
-  -moz-border-radius: 0.3125em;
   border-radius: 0.3125em;
-  cursor: pointer;
+
   transition: all var(--transition);
 }
 
@@ -24,8 +27,8 @@
 
 .button--outlined {
   color: var(--text-primary);
-  border: var(--button-outlined-border);
   background-color: var(--button-outlined-bg);
+  border: var(--button-outlined-border);
 }
 
 .button--outlined:hover {
