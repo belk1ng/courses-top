@@ -1,5 +1,6 @@
 import Button from "@/components/button";
 import Heading from "@/components/heading";
+import Tag from "@/components/tag";
 import Typography from "@/components/typography";
 
 export const metadata = {
@@ -16,6 +17,34 @@ const Home = () => {
       <Typography size={14}>Текст 14</Typography>
       <Typography size={16}>Текст 16</Typography>
       <Typography size={18}>Текст 18</Typography>
+      <section>
+        <Tag>Тег</Tag>
+        <Tag size="medium">Тег</Tag>
+        <Tag size="medium" variant="link">
+          Тег
+        </Tag>
+        <Tag color="success">Тег</Tag>
+        <Tag color="success" size="medium">
+          Тег
+        </Tag>
+        <Tag color="success" size="medium" variant="link">
+          Тег
+        </Tag>
+        <Tag color="error">Тег</Tag>
+        <Tag color="error" size="medium">
+          Тег
+        </Tag>
+        <Tag color="error" size="medium" variant="link">
+          Тег
+        </Tag>
+        <Tag color="primary">Тег</Tag>
+        <Tag color="primary" size="medium">
+          Тег
+        </Tag>
+        <Tag color="primary" size="medium" variant="link">
+          Тег
+        </Tag>
+      </section>
     </main>
   );
 };
