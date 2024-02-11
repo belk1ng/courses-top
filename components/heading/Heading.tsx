@@ -7,7 +7,7 @@ import type { HeadingProps } from "./Heading.props";
 
 const Heading: FC<HeadingProps> = ({
   as = "h2",
-  className = "",
+  className,
   children,
   ...rest
 }) => {

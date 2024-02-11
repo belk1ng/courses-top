@@ -1,0 +1,16 @@
+.typography {
+  font-weight: 400;
+  color: var(--text-primary);
+}
+
+.typography--14 {
+  font-size: 0.875em;
+}
+
+.typography--16 {
+  font-size: 1em;
+}
+
+.typography--18 {
+  font-size: 1.125em;
+}
