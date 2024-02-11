@@ -1,4 +1,4 @@
-import { HTMLAttributes } from "react";
+import type { HTMLAttributes } from "react";
 
 type HeadingVariant = "h1" | "h2" | "h3";
 

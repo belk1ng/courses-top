@@ -1,5 +1,6 @@
 import Button from "@/components/button";
 import Heading from "@/components/heading";
+import Rating from "@/components/rating";
 import Tag from "@/components/tag";
 import Typography from "@/components/typography";
 
@@ -45,6 +46,7 @@ const Home = () => {
           Тег
         </Tag>
       </section>
+      <Rating />
     </main>
   );
 };

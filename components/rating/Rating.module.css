@@ -1,0 +1,34 @@
+.star {
+  display: inline-block;
+
+  color: hsl(0deg 0% 89%);
+
+  background-color: transparent;
+  border: none;
+
+  transition: var(--transition);
+}
+
+.star:not(:first-of-type) svg {
+  margin-left: 0.3125rem;
+}
+
+.star--active {
+  color: var(--primary);
+}
+
+@media (hover: hover) {
+  .star:hover:not(.star--readonly),
+  .star:has(~ .star:hover):not(.star--readonly) {
+    cursor: pointer;
+    color: var(--button-contained-bg-hover);
+  }
+}
+
+@media (hover: none) {
+  .star:active:not(.star--readonly),
+  .star:has(~ .star:active):not(.star--readonly) {
+    cursor: pointer;
+    color: var(--button-contained-bg-hover);
+  }
+}
