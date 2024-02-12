@@ -1,0 +1,47 @@
+@supports (display: grid) {
+  .layout {
+    --aside-width: 230px;
+
+    display: grid;
+    grid-template:
+      ". header header ." auto
+      ". aside main ." 1fr
+      "footer footer footer footer" auto
+      / auto var(--aside-width) minmax(var(--min-width), var(--max-width)) auto;
+  }
+
+  .layout__header {
+    display: none;
+    grid-area: header;
+  }
+
+  .layout__aside {
+    grid-area: aside;
+  }
+
+  .layout__main {
+    grid-area: main;
+  }
+
+  .layout__footer {
+    grid-area: footer;
+  }
+
+  @media screen and (width <= 767px) {
+    .layout {
+      grid-template:
+        "header" auto
+        "main" 1fr
+        "footer" auto
+        / minmax(var(--min-width), 1fr);
+    }
+
+    .layout__header {
+      display: block;
+    }
+
+    .layout__aside {
+      display: none;
+    }
+  }
+}
