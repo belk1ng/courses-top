@@ -1,4 +1,6 @@
 import http from "@/lib/HttpClient";
+import type { MenuResponse, SubmenuRequestParams } from "@/typings/menu";
+import type { PageParamsResponse } from "@/typings/page-params";
 
 enum RootCategories {
   Courses,
@@ -6,15 +8,26 @@ enum RootCategories {
 
 class TopPageApi {
   static async getSubmenuByCategory(firstCategory = RootCategories.Courses) {
-    const menu = await http.post("/top-page/find", {
-      firstCategory,
-    });
-    return menu;
+    try {
+      return await http.post<SubmenuRequestParams, MenuResponse[]>(
+        "/top-page/find",
+        {
+          firstCategory,
+        }
+      );
+    } catch (error) {
+      console.log("SubmenuByCategoryRequestError: ", error);
+      return null;
+    }
   }
 
   static async getPageDetailsByAlias(alias: string) {
-    const details = await http.get(`/top-page/byAlias/${alias}`);
-    return details;
+    try {
+      return await http.get<PageParamsResponse>(`/top-page/byAlias/${alias}`);
+    } catch (error) {
+      console.log("PageDetailsRequestError: ", error);
+      return null;
+    }
   }
 }
 

@@ -13,27 +13,16 @@ class HttpClient {
       ...options,
     };
 
-    try {
-      const response = await fetch(`${this.baseURL}${uri}`, requestOptions);
-      if (!response.ok) {
-        return Promise.reject(response);
-      }
-
-      return response.json();
-    } catch (error) {
-      console.log("Error during request: ", error);
-      throw error;
+    const response = await fetch(`${this.baseURL}${uri}`, requestOptions);
+    if (!response.ok) {
+      return Promise.reject(response);
     }
+
+    return response.json();
   }
 
   public async get<T = void>(uri: string): Promise<T> {
-    try {
-      const response = await this.request<T>(uri);
-      return response;
-    } catch (error) {
-      console.log("Error during GET request: ", error);
-      throw error;
-    }
+    return this.request<T>(uri);
   }
 
   public async post<T extends Record<string, unknown>, U = void>(
@@ -47,13 +36,7 @@ class HttpClient {
       ...options,
     };
 
-    try {
-      const response = await this.request<U>(uri, requestOptions);
-      return response;
-    } catch (error) {
-      console.log("Error during POST request: ", error);
-      throw error;
-    }
+    return this.request<U>(uri, requestOptions);
   }
 }
 
