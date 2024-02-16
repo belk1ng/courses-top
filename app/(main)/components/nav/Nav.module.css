@@ -17,11 +17,22 @@
   transition: color var(--transition);
 }
 
-.nav__item--active,
-.nav__item > .nav__label:hover,
-.nav__item > svg:has(+ .nav__label:hover) {
-  cursor: pointer;
-  color: var(--primary);
+@media (hover: hover) {
+  .nav__item--active,
+  .nav__item > .nav__label:hover,
+  .nav__item > svg:has(+ .nav__label:hover) {
+    cursor: pointer;
+    color: var(--primary);
+  }
+}
+
+@media (hover: none) {
+  .nav__item--active,
+  .nav__item > .nav__label:active,
+  .nav__item > svg:has(+ .nav__label:active) {
+    cursor: pointer;
+    color: var(--primary);
+  }
 }
 
 .nav__item--root {
