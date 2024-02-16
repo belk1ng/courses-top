@@ -13,21 +13,22 @@
   --button-outlined-border-hover: 1px solid hsl(0deg 2% 70%);
   --button-outlined-bg: hsl(0deg 0% 100%);
   --min-width: 320px;
-  --max-width: 1200px;
+  --max-width: 1440px;
   --transition: 0.25s cubic-bezier(0.25, 0.75, 0.5, 1.25);
 }
 
 html {
   scroll-behavior: smooth;
   height: 100%;
+  font-size: 1em;
 }
 
 body {
   box-sizing: border-box;
   min-height: 100%;
 
-  font-size: 1em;
-  line-height: 1.5;
+  font-size: clamp(0.75rem, 0.32vw + 0.686rem, 1rem);
+  line-height: clamp(1.02rem, 0.614vw + 0.897rem, 1.5rem);
 
   background-color: var(--bg-color);
 

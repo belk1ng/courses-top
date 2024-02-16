@@ -1,6 +1,5 @@
 .nav {
   font-size: 1.125em;
-  line-height: 1.36;
 }
 
 .nav__list {
@@ -13,9 +12,9 @@
 
 .nav__label {
   display: flex;
-  align-items: center;
-  transition: color 0.25s;
   gap: 1.1111em;
+  align-items: center;
+  transition: color var(--transition);
 }
 
 .nav__item--active,
@@ -26,8 +25,8 @@
 }
 
 .nav__item--root {
-  font-weight: 500;
   margin-bottom: 1.1111em;
+  font-weight: 500;
 }
 
 .nav__item--root > .nav__list {
