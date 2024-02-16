@@ -7,8 +7,8 @@ import TopPageApi from "@/lib/TopPage.api";
 import type { ProductsPageProps } from "./page.props";
 
 export const metadata = {
-  title: "Продукты по алиасу",
   description: "Описание продуктов",
+  title: "Продукты по алиасу",
 };
 
 const ProductsPage: FC<ProductsPageProps> = async ({ params }) => {
@@ -27,7 +27,7 @@ const ProductsPage: FC<ProductsPageProps> = async ({ params }) => {
   );
 };
 
-export const generateStaticParams = async () => {
+export const generatestaticparams = async () => {
   const aliases = await TopPageApi.getSubmenuByCategory();
 
   if (aliases) {

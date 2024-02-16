@@ -18,17 +18,15 @@ const Rating: FC<RatingProps> = ({
   ...rest
 }) => {
   const [localRating, setLocalRating] = useState(rating);
-
   useEffect(() => {
     setLocalRating(rating);
   }, [rating]);
-
-  const handleChangeRating = (newRating: number) => {
+  const handlechangerating = (newRating: number) => {
     setLocalRating(newRating);
     setRating && setRating(newRating);
   };
 
-  const onKeyDown = (
+  const onkeydown = (
     event: KeyboardEvent<HTMLButtonElement>,
     newRating: number
   ) => {
@@ -37,7 +35,7 @@ const Rating: FC<RatingProps> = ({
     }
   };
 
-  const onClick = (newRating: number) => {
+  const onclick = (newRating: number) => {
     if (readonly) {
       return;
     }

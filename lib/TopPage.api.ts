@@ -2,8 +2,11 @@ import http from "@/lib/HttpClient";
 import type { MenuResponse, SubmenuRequestParams } from "@/typings/menu";
 import type { PageParamsResponse } from "@/typings/page-params";
 
-enum RootCategories {
+export const enum RootCategories {
   Courses,
+  Services,
+  Books,
+  Products,
 }
 
 class TopPageApi {
