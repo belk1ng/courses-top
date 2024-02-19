@@ -14,8 +14,8 @@ const roboto = Roboto({
   weight: ["300", "400", "500", "700"],
 });
 
-interface props {
-  children: reactnode | reactnode[];
+interface Props {
+  children: ReactNode | ReactNode[];
 }
 
 const RootLayout: FC<Props> = ({ children }) => (
@@ -27,6 +27,6 @@ const RootLayout: FC<Props> = ({ children }) => (
       <Footer className={classes.layout__footer} />
     </body>
   </html>
-);RootLayout
+);
 
 export default RootLayout;

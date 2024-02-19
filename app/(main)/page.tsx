@@ -11,7 +11,7 @@ export const metadata = {
 
 const Home = () => {
   return (
-    <main>
+    <section>
       <Heading as="h1">Hello world :)</Heading>
       <Button>Кнопка 1</Button>
       <Button variant="outlined">Кнопка 2</Button>
@@ -47,7 +47,7 @@ const Home = () => {
         </Tag>
       </section>
       <Rating />
-    </main>
+    </section>
   );
 };
 

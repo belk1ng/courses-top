@@ -17,6 +17,11 @@
   transition: color var(--transition);
 }
 
+a.nav__label {
+  color: var(--text-secondary);
+  text-decoration: none;
+}
+
 @media (hover: hover) {
   .nav__item--active,
   .nav__item > .nav__label:hover,
