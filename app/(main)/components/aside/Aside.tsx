@@ -1,12 +1,21 @@
+import cn from "classnames";
+import Image from "next/image";
+import Link from "next/link";
 import type { FC } from "react";
 
+import Typography from "@/components/typography";
+
+import classes from "./Aside.module.css";
 import type { AsideProps } from "./Aside.props";
 import Nav from "../nav";
 
-const Aside: FC<AsideProps> = ({ ...props }) => {
+const Aside: FC<AsideProps> = ({ className, ...props }) => {
   return (
-    <aside {...props}>
-      Лого и поиск
+    <aside className={cn(classes.aside, className)} {...props}>
+      <Link href="/">
+        <Image alt="Logo" height="44" src="/logo.svg" width="159" />
+      </Link>
+      <Typography>Поиск</Typography>
       <Nav />
     </aside>
   );

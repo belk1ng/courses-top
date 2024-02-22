@@ -1,5 +1,5 @@
 import http from "@/lib/HttpClient";
-import type { MenuResponse, SubmenuRequestParams } from "@/typings/menu";
+import type { SubCategory, SubCategoryRequestParams } from "@/typings/menu";
 import type { PageParamsResponse } from "@/typings/page-params";
 
 export const enum RootCategories {
@@ -12,7 +12,7 @@ export const enum RootCategories {
 class TopPageApi {
   static async getSubmenuByCategory(firstCategory = RootCategories.Courses) {
     try {
-      return await http.post<SubmenuRequestParams, MenuResponse[]>(
+      return await http.post<SubCategoryRequestParams, SubCategory[]>(
         "/top-page/find",
         {
           firstCategory,

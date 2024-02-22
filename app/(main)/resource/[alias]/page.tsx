@@ -1,10 +1,10 @@
 import { notFound } from "next/navigation";
 import type { FC } from "react";
 
-import { ROOT_PREFIXES } from "@/app/(main)/components/nav/nav.config";
+import { NAV_CONFIG } from "@/app/(main)/components/nav/nav.config";
 import Typography from "@/components/typography";
 import ProductApi from "@/lib/Product.api";
-import TopPageApi, { RootCategories } from "@/lib/TopPage.api";
+import TopPageApi from "@/lib/TopPage.api";
 
 import type { ProductsPageProps } from "./page.props";
 
@@ -14,11 +14,11 @@ export const metadata = {
 };
 
 const ProductsPage: FC<ProductsPageProps> = async ({ params }) => {
-  const { alias, category } = params;
+  const { alias } = params;
 
   const details = await TopPageApi.getPageDetailsByAlias(alias);
 
-  if (!details || !ROOT_PREFIXES.includes(category)) {
+  if (!details) {
     notFound();
   }
 
@@ -37,15 +37,17 @@ const ProductsPage: FC<ProductsPageProps> = async ({ params }) => {
 };
 
 export const generateStaticParams = async () => {
-  const aliases = await TopPageApi.getSubmenuByCategory(RootCategories.Courses);
+  const menu = await Promise.all(
+    NAV_CONFIG.map(({ categoryId }) =>
+      TopPageApi.getSubmenuByCategory(categoryId)
+    )
+  );
 
-  if (aliases) {
-    return aliases.flatMap(({ pages }) =>
-      pages.map(({ alias }) => ({ category: "courses", alias }))
-    );
-  }
-
-  return [];
+  return menu.flatMap((rootCategory) =>
+    rootCategory?.flatMap((subCategory) =>
+      subCategory.pages.map(({ alias }) => ({ alias }))
+    )
+  );
 };
 
 export default ProductsPage;

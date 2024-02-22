@@ -18,6 +18,19 @@
   grid-area: aside;
 }
 
+.layout__aside,
+.layout__main {
+  margin-top: 2.5em;
+}
+
+.layout__aside {
+  padding-left: 2.0625em;
+}
+
+.layout__main {
+  padding-inline: 2.0625em;
+}
+
 .layout__main {
   grid-area: main;
 }
