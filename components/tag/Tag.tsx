@@ -24,6 +24,7 @@ const Tag: FC<TagProps> = ({
       [classes["tag--success"]]: color === "success",
       [classes["tag--error"]]: color === "error",
       [classes["tag--primary"]]: color === "primary",
+      [classes["tag--info"]]: color === "info",
     },
     className
   );

@@ -3,8 +3,11 @@
 
   display: inline-block;
 
+  min-width: 35px;
+
   font-weight: 500;
   color: var(--tag-color);
+  text-align: center;
 
   background-color: var(--tag-bg);
   border: 1px solid var(--tag-border-color);
@@ -45,4 +48,9 @@
 .tag--primary {
   --tag-color: var(--primary);
   --tag-border-color: currentcolor;
+}
+
+.tag--info {
+  --tag-color: hsla(0deg 0% 100%);
+  --tag-bg: hsl(219deg 33% 78%);
 }

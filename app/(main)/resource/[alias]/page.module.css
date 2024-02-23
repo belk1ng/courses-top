@@ -1,0 +1,104 @@
+.header {
+  display: grid;
+  grid-gap: 1.1875em;
+  grid-template-columns: auto 1fr;
+  place-items: center start;
+}
+
+.page__section {
+  margin-top: 3.125em;
+}
+
+.hh {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto 1fr;
+  grid-gap: 1.5em;
+}
+
+.hh__header {
+  display: grid;
+  grid-gap: 1.25em;
+  grid-template-columns: auto 1fr;
+  place-items: center start;
+}
+
+.hh__content {
+  display: grid;
+  grid-gap: 1.875em;
+  grid-template-columns: 1fr 3fr;
+}
+
+.hh__card,
+.hh__salary {
+  display: flex;
+  gap: 0.6em;
+  align-items: center;
+}
+
+.hh__salary {
+  flex-direction: column;
+}
+
+.hh__divider {
+  width: 1px;
+  height: 100%;
+  border-right: 1px solid hsl(0deg 0% 77%);
+}
+
+.hh__vacancies {
+  flex-direction: column;
+  justify-content: center;
+}
+
+.hh__salaries {
+  justify-content: space-evenly;
+}
+
+.hh__title {
+  font-size: 1em;
+  font-weight: 300;
+}
+
+.hh__value {
+  font-size: 1.3em;
+  font-weight: 700;
+  line-height: 1.75em;
+}
+
+.hh__value--primary {
+  font-size: 1.8em;
+  line-height: 2.45em;
+  color: var(--primary);
+}
+
+.hh__levels {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5em;
+}
+
+@media screen and (width <= 925px) {
+  .hh__content {
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(2, 1fr);
+  }
+}
+
+@media screen and (width <= 550px) {
+  .hh__content {
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 3fr;
+  }
+
+  .hh__salaries {
+    flex-direction: column;
+  }
+
+  .hh__divider {
+    width: 100%;
+    height: 1px;
+    border-bottom: 1px solid hsl(0deg 0% 77%);
+  }
+}

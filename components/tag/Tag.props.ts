@@ -2,7 +2,7 @@ import type { HTMLAttributes } from "react";
 
 type TagSize = "small" | "medium";
 type TagVariant = "link" | "badge";
-type TagColor = "success" | "error" | "primary" | "default";
+type TagColor = "success" | "error" | "primary" | "info" | "default";
 
 export interface TagProps extends HTMLAttributes<HTMLDivElement> {
   size?: TagSize;

@@ -12,7 +12,7 @@ export interface PageParamsResponse {
   createdAt: Date;
   updatedAt: Date;
   __v: number;
-  hh: HeadHunterStatistics;
+  hh?: HeadHunterStatistics;
   qas: QA[];
   categoryOn: string;
   blog: Blog;
