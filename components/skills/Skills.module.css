@@ -1,0 +1,11 @@
+.skills {
+  display: grid;
+  grid-gap: 1.25em;
+  grid-template-columns: 1fr;
+}
+
+.skills__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.625em;
+}

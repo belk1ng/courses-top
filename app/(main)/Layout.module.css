@@ -16,6 +16,7 @@
 
 .layout__aside {
   grid-area: aside;
+  padding-left: 2.0625em;
 }
 
 .layout__aside,
@@ -23,16 +24,9 @@
   margin-top: 2.5em;
 }
 
-.layout__aside {
-  padding-left: 2.0625em;
-}
-
-.layout__main {
-  padding-inline: 2.0625em;
-}
-
 .layout__main {
   grid-area: main;
+  padding-inline: 2.0625em;
 }
 
 .layout__footer {

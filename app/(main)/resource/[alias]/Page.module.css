@@ -1,0 +1,45 @@
+.header {
+  display: grid;
+  grid-gap: 1.1875em;
+  grid-template-columns: auto 1fr;
+  place-items: center start;
+}
+
+.header,
+.header ~ * {
+  margin-bottom: 3.125em;
+}
+
+.seo {
+  display: grid;
+  gap: 1.5em;
+  color: var(--text-primary);
+}
+
+.seo h1 {
+  font-size: 1.625em;
+  font-weight: 500;
+}
+
+.seo h2 {
+  font-size: 1.375em;
+  font-weight: 500;
+}
+
+.seo h3 {
+  font-size: 1.25em;
+  font-weight: 500;
+}
+
+.seo ul {
+  padding-left: 1em;
+}
+
+.seo li,
+.seo p {
+  text-align: justify;
+}
+
+.seo li::marker {
+  color: var(--primary);
+}

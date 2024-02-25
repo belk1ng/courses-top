@@ -9,6 +9,8 @@ export interface PageParamsResponse {
   tagsTitle: string;
   metaTitle: string;
   metaDescription: string;
+  advantages?: Advantage[];
+  seoText?: string;
   createdAt: Date;
   updatedAt: Date;
   __v: number;
@@ -16,6 +18,12 @@ export interface PageParamsResponse {
   qas: QA[];
   categoryOn: string;
   blog: Blog;
+}
+
+export interface Advantage {
+  title: string;
+  description: string;
+  _id: string;
 }
 
 export interface Blog {

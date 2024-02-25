@@ -1,19 +1,8 @@
-.header {
-  display: grid;
-  grid-gap: 1.1875em;
-  grid-template-columns: auto 1fr;
-  place-items: center start;
-}
-
-.page__section {
-  margin-top: 3.125em;
-}
-
 .hh {
   display: grid;
+  grid-gap: 1.5em;
   grid-template-columns: 1fr;
   grid-template-rows: auto 1fr;
-  grid-gap: 1.5em;
 }
 
 .hh__header {
@@ -74,9 +63,9 @@
 
 .hh__levels {
   display: flex;
+  gap: 0.5em;
   align-items: center;
   justify-content: center;
-  gap: 0.5em;
 }
 
 @media screen and (width <= 925px) {
