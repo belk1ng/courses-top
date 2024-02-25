@@ -1,0 +1,39 @@
+.sortable {
+  font-size: 1em;
+  color: var(--text-primary);
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-gap: 2.6875em;
+}
+
+.sortable__item {
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+  cursor: pointer;
+}
+
+.sortable__field {
+  font-size: inherit;
+  transition: color var(--transition);
+}
+
+@media (hover: hover) {
+  .sortable__field:hover {
+    color: var(--primary);
+  }
+}
+
+@media (hover: none) {
+  .sortable__field:active {
+    color: var(--primary);
+  }
+}
+
+.sortable__field--active {
+  font-weight: 700;
+  color: var(--primary);
+  display: flex;
+  justify-content: center;
+  gap: 0.5em;
+}

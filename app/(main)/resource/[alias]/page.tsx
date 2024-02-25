@@ -3,15 +3,17 @@ import { notFound } from "next/navigation";
 import type { FC } from "react";
 
 import { NAV_CONFIG } from "@/app/(main)/components/nav/nav.config";
-import Advantages from "@/components/advantages";
-import HeadHunter from "@/components/head-hunter";
+import SortableProducts from "@/app/(main)/resource/[alias]/components/sortable-products";
 import Heading from "@/components/heading";
-import Skills from "@/components/skills";
+import Sortable from "@/components/sortable";
 import Tag from "@/components/tag";
 import Typography from "@/components/typography";
 import ProductApi from "@/lib/Product.api";
 import TopPageApi from "@/lib/TopPage.api";
 
+import Advantages from "./components/advantages";
+import HeadHunter from "./components/head-hunter";
+import Skills from "./components/skills";
 import classes from "./Page.module.css";
 import type { ProductsPageProps } from "./page.props";
 
@@ -36,17 +38,7 @@ const ProductsPage: FC<ProductsPageProps> = async ({ params }) => {
 
   return (
     <>
-      <header className={classes.header}>
-        <Heading as="h1">{details.title}</Heading>
-        <Tag color="info" size="medium">
-          {products.length ?? 0}
-        </Tag>
-      </header>
-      <section>
-        {products.map((product) => (
-          <Typography key={product._id}>{product.title}</Typography>
-        ))}
-      </section>
+      <SortableProducts products={products} title={details.title} />
       {details.hh && (
         <HeadHunter category={details.category} values={details.hh} />
       )}

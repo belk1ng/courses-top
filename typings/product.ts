@@ -3,7 +3,7 @@ export type ProductsRequestParams = {
   category: string;
 };
 
-export interface ProductResponse {
+export interface Product {
   _id: string;
   categories: string[];
   tags: string[];

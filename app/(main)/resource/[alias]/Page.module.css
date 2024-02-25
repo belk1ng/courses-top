@@ -1,7 +1,7 @@
 .header {
   display: grid;
   grid-gap: 1.1875em;
-  grid-template-columns: auto 1fr;
+  grid-template-columns: auto 1fr auto;
   place-items: center start;
 }
 
@@ -12,8 +12,11 @@
 
 .seo {
   display: grid;
-  gap: 1.5em;
   color: var(--text-primary);
+}
+
+.seo * {
+  margin-block: 1.5em;
 }
 
 .seo h1 {
@@ -33,10 +36,12 @@
 
 .seo ul {
   padding-left: 1em;
+  margin: 0;
 }
 
 .seo li,
 .seo p {
+  margin-block: 0.75em;
   text-align: justify;
 }
 
