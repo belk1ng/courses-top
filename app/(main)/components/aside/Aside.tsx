@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import type { FC } from "react";
 
-import Typography from "@/components/typography";
+import Search from "@/app/(main)/resource/[alias]/components/search";
 
 import classes from "./Aside.module.css";
 import type { AsideProps } from "./Aside.props";
@@ -15,7 +15,7 @@ const Aside: FC<AsideProps> = ({ className, ...props }) => {
       <Link href="/">
         <Image alt="Logo" height="44" src="/logo.svg" width="159" />
       </Link>
-      <Typography>Поиск</Typography>
+      <Search />
       <Nav />
     </aside>
   );

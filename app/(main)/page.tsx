@@ -3,7 +3,7 @@ import Heading from "@/components/heading";
 import Input from "@/components/input";
 import Rating from "@/components/rating";
 import Tag from "@/components/tag";
-import Textarea from "@/components/textarea/Textarea";
+import Textarea from "@/components/textarea";
 import Typography from "@/components/typography";
 
 export const metadata = {
