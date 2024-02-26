@@ -1,7 +1,9 @@
 import Button from "@/components/button";
 import Heading from "@/components/heading";
+import Input from "@/components/input";
 import Rating from "@/components/rating";
 import Tag from "@/components/tag";
+import Textarea from "@/components/textarea/Textarea";
 import Typography from "@/components/typography";
 
 export const metadata = {
@@ -47,6 +49,8 @@ const Home = () => {
         </Tag>
       </section>
       <Rating />
+      <Input placeholder="Введите имя" />
+      <Textarea placeholder="Введите отзыв" />
     </section>
   );
 };

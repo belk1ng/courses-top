@@ -4,10 +4,6 @@ import type { FC } from "react";
 
 import { NAV_CONFIG } from "@/app/(main)/components/nav/nav.config";
 import SortableProducts from "@/app/(main)/resource/[alias]/components/sortable-products";
-import Heading from "@/components/heading";
-import Sortable from "@/components/sortable";
-import Tag from "@/components/tag";
-import Typography from "@/components/typography";
 import ProductApi from "@/lib/Product.api";
 import TopPageApi from "@/lib/TopPage.api";
 

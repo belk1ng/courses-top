@@ -37,23 +37,13 @@ const HeadHunter: FC<HeadHunterProps> = ({ values, category }) => {
             </Typography>
             <div className={classes.hh__levels}>
               <Image
-                alt="Активный уровень: 1 из 3"
+                alt=""
                 height={20}
                 src="/circledActiveStar.svg"
                 width={20}
               />
-              <Image
-                alt="Уровень: 2 из 3"
-                height={20}
-                src="/circledStar.svg"
-                width={20}
-              />
-              <Image
-                alt="Уровень: 2 из 3"
-                height={20}
-                src="/circledStar.svg"
-                width={20}
-              />
+              <Image alt="" height={20} src="/circledStar.svg" width={20} />
+              <Image alt="" height={20} src="/circledStar.svg" width={20} />
             </div>
           </div>
           <div className={classes.hh__divider} />
@@ -64,23 +54,18 @@ const HeadHunter: FC<HeadHunterProps> = ({ values, category }) => {
             </Typography>
             <div className={classes.hh__levels}>
               <Image
-                alt="Активный уровень: 1 из 3"
+                alt=""
                 height={20}
                 src="/circledActiveStar.svg"
                 width={20}
               />
               <Image
-                alt="Активный уровень: 2 из 3"
+                alt=""
                 height={20}
                 src="/circledActiveStar.svg"
                 width={20}
               />
-              <Image
-                alt="Уровень: 2 из 3"
-                height={20}
-                src="/circledStar.svg"
-                width={20}
-              />
+              <Image alt="" height={20} src="/circledStar.svg" width={20} />
             </div>
           </div>
           <div className={classes.hh__divider} />
@@ -91,19 +76,19 @@ const HeadHunter: FC<HeadHunterProps> = ({ values, category }) => {
             </Typography>
             <div className={classes.hh__levels}>
               <Image
-                alt="Активный уровень: 1 из 3"
+                alt=""
                 height={20}
                 src="/circledActiveStar.svg"
                 width={20}
               />
               <Image
-                alt="Активный уровень: 2 из 3"
+                alt=""
                 height={20}
                 src="/circledActiveStar.svg"
                 width={20}
               />
               <Image
-                alt="Активный уровень: 2 из 3"
+                alt=""
                 height={20}
                 src="/circledActiveStar.svg"
                 width={20}

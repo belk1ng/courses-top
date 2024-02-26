@@ -1,16 +1,17 @@
 .sortable {
+  display: grid;
+  grid-gap: 2.6875em;
+  grid-template-columns: auto auto;
+
   font-size: 1em;
   color: var(--text-primary);
-  display: grid;
-  grid-template-columns: auto auto;
-  grid-gap: 2.6875em;
 }
 
 .sortable__item {
-  display: flex;
-  align-items: center;
-  gap: 0.5em;
   cursor: pointer;
+  display: flex;
+  gap: 0.5em;
+  align-items: center;
 }
 
 .sortable__field {
@@ -31,9 +32,10 @@
 }
 
 .sortable__field--active {
+  display: flex;
+  gap: 0.5em;
+  justify-content: center;
+
   font-weight: 700;
   color: var(--primary);
-  display: flex;
-  justify-content: center;
-  gap: 0.5em;
 }

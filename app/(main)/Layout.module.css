@@ -42,11 +42,11 @@
       / minmax(var(--min-width), 1fr);
   }
 
-  .layout__header {
+  .layout > .layout__header {
     display: block;
   }
 
-  .layout__aside {
+  .layout > .layout__aside {
     display: none;
   }
 }
