@@ -20,16 +20,13 @@
 html {
   scroll-behavior: smooth;
   height: 100%;
-  font-size: 1em;
+  font-size: clamp(0.75rem, 0.32vw + 0.686rem, 1rem);
+  line-height: clamp(1.02rem, 0.614vw + 0.897rem, 1.5rem);
 }
 
 body {
   box-sizing: border-box;
   min-height: 100%;
-
-  font-size: clamp(0.75rem, 0.32vw + 0.686rem, 1rem);
-  line-height: clamp(1.02rem, 0.614vw + 0.897rem, 1.5rem);
-
   background-color: var(--bg-color);
 
   -webkit-font-smoothing: antialiased;

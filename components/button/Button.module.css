@@ -7,7 +7,7 @@
 
   padding: 0.5714em 1em;
 
-  font-size: 0.875em;
+  font-size: 0.875rem;
   font-weight: 400;
 
   border: 0;
@@ -21,16 +21,28 @@
   background-color: var(--button-contained-bg);
 }
 
-.button--contained:hover {
-  background-color: var(--button-contained-bg-hover);
-}
-
 .button--outlined {
   color: var(--text-primary);
   background-color: var(--button-outlined-bg);
   border: var(--button-outlined-border);
 }
 
-.button--outlined:hover {
-  border: var(--button-outlined-border-hover);
+@media (hover: hover) {
+  .button--contained:hover {
+    background-color: var(--button-contained-bg-hover);
+  }
+
+  .button--outlined:hover {
+    border: var(--button-outlined-border-hover);
+  }
+}
+
+@media (hover: none) {
+  .button--contained:active {
+    background-color: var(--button-contained-bg-hover);
+  }
+
+  .button--outlined:active {
+    border: var(--button-outlined-border-hover);
+  }
 }

@@ -21,7 +21,7 @@ const Product: FC<ProductProps> = ({ record, ...rest }) => {
         alt=""
         className={classes.product__image}
         height={70}
-        src={record.image}
+        src="/placeholder.png"
         width={70}
       />
       <Heading as="h2" className={classes.product__title}>
@@ -30,7 +30,11 @@ const Product: FC<ProductProps> = ({ record, ...rest }) => {
       <section className={classes.product__price}>
         <Typography>{numberFormat(record.price)} ₽</Typography>
         {record.oldPrice && (
-          <Tag className={classes.product__oldprice} color="success">
+          <Tag
+            className={classes["product__price--tag"]}
+            color="success"
+            size="small"
+          >
             {numberFormat(record.price - record.oldPrice)} ₽
           </Tag>
         )}
@@ -99,7 +103,9 @@ const Product: FC<ProductProps> = ({ record, ...rest }) => {
               <Typography className={classes.features__title}>
                 Преимущества
               </Typography>
-              <Typography>{record.advantages}</Typography>
+              <Typography className={classes.features__description}>
+                {record.advantages}
+              </Typography>
             </div>
           )}
           {record.disAdvantages && (
@@ -112,7 +118,9 @@ const Product: FC<ProductProps> = ({ record, ...rest }) => {
               <Typography className={classes.features__title}>
                 Недостатки
               </Typography>
-              <Typography>{record.disAdvantages}</Typography>
+              <Typography className={classes.features__description}>
+                {record.disAdvantages}
+              </Typography>
             </div>
           )}
         </section>

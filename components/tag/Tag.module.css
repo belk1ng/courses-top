@@ -19,13 +19,13 @@
 
 .tag--small {
   padding: 0.416em 1em;
-  font-size: 0.75em;
+  font-size: 0.75rem;
   border-radius: 1.666em;
 }
 
 .tag--medium {
   padding: 0.3571em 0.8571em;
-  font-size: 0.875em;
+  font-size: 0.875rem;
   font-weight: 700;
   border-radius: 1.4285em;
 }

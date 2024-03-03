@@ -6,7 +6,7 @@
 
   padding: 1.5em 2em;
 
-  font-size: 1em;
+  font-size: 1rem;
 
   background-color: var(--primary);
 }
@@ -26,7 +26,7 @@ p.footer__typography,
   color: hsl(0deg 0% 92%);
 }
 
-@media screen and (width <= 49.1875em) {
+@media screen and (width <= 787px) {
   .footer {
     grid-auto-rows: 1fr;
     grid-template-columns: 1fr;

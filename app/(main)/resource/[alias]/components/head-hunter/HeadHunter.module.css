@@ -45,18 +45,18 @@
 }
 
 .hh__title {
-  font-size: 1em;
+  font-size: 1rem;
   font-weight: 300;
 }
 
 .hh__value {
-  font-size: 1.3em;
+  font-size: 1.3rem;
   font-weight: 700;
   line-height: 1.75em;
 }
 
 .hh__value--primary {
-  font-size: 1.8em;
+  font-size: 1.8rem;
   line-height: 2.45em;
   color: var(--primary);
 }

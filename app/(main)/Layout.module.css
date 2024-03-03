@@ -33,7 +33,7 @@
   grid-area: footer;
 }
 
-@media screen and (width <= 47.9375em) {
+@media screen and (width <= 767px) {
   .layout {
     grid-template:
       "header" auto
