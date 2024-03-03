@@ -11,12 +11,12 @@ export interface Product {
   link: string;
   image: string;
   initialRating: number;
-  characteristics: Characteristic[];
+  characteristics?: Characteristic[];
   price: number;
   oldPrice: number;
   credit: number;
   description: string;
-  advantages: string;
+  advantages?: string;
   disAdvantages?: string;
   createdAt: Date;
   updatedAt: Date;
@@ -28,7 +28,7 @@ export interface Product {
   clicks: number;
   reviews: Review[];
   reviewCount: number;
-  reviewAvg: number;
+  reviewAvg?: number;
 }
 
 export interface AdditionalMeta {

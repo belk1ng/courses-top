@@ -5,10 +5,10 @@ import { useReducer } from "react";
 
 import classes from "@/app/(main)/resource/[alias]/Page.module.css";
 import Heading from "@/components/heading";
+import Product from "@/components/product";
 import Sortable from "@/components/sortable";
 import sortableReducer, { init } from "@/components/sortable/Sortable.reducer";
 import Tag from "@/components/tag";
-import Typography from "@/components/typography";
 
 import type { SortableProductsProps } from "./SortableProducts.props";
 
@@ -26,7 +26,7 @@ const SortableProducts: FC<SortableProductsProps> = ({ title, products }) => {
       </header>
       <section>
         {state.products.map((product) => (
-          <Typography key={product._id}>{product.title}</Typography>
+          <Product key={product._id} record={product} />
         ))}
       </section>
     </>

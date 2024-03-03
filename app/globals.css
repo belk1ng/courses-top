@@ -5,7 +5,7 @@
   --success-light: hsl(155deg 77% 88%);
   --text-primary: hsl(215deg 14% 27%);
   --text-secondary: hsl(180deg 0% 53%);
-  --divider: 1px dotted hsl(0deg 0% 77%);
+  --divider: 1px solid hsl(0deg 0% 77%);
   --button-contained-bg: hsl(252deg 97% 66%);
   --button-contained-bg-hover: hsl(252deg 82% 55%);
   --button-contained-color: hsl(0deg 0% 100%);

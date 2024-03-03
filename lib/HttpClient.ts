@@ -41,6 +41,6 @@ class HttpClient {
 }
 
 const baseURL = process.env.NEXT_PUBLIC_BASE_URL as string;
-const http = new HttpClient(baseURL);
+const http = new HttpClient(baseURL + "/api");
 
 export default http;
