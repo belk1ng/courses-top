@@ -16,21 +16,30 @@ export const initialState: SortableState = {
   products: [],
 };
 
-export const init = (products: Product[]) => ({ ...initialState, products });
+const sortByRating = (records: Product[]) => {
+  return records.sort((a, b) => (b.reviewAvg ?? 0) - (a.reviewAvg ?? 0));
+};
+
+const sortByPrice = (records: Product[]) => {
+  return records.sort((a, b) => a.price - b.price);
+};
+
+export const init = (products: Product[]) => ({
+  ...initialState,
+  products: sortByRating(products),
+});
 
 const reducer = (state: typeof initialState, action: SortableActionType) => {
   switch (action.type) {
     case "sortable/setRating":
       return {
         order: action.payload,
-        products: state.products.sort(
-          (a, b) => a.initialRating - b.initialRating
-        ),
+        products: sortByRating(state.products),
       };
     case "sortable/setPrice": {
       return {
         order: action.payload,
-        products: state.products.sort((a, b) => a.price - b.price),
+        products: sortByPrice(state.products),
       };
     }
     default:

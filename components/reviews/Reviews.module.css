@@ -1,0 +1,89 @@
+.reviews {
+  margin-top: -1em;
+  padding: 1.875em;
+
+  font-size: 1rem;
+
+  background-color: hsl(249deg 100% 99%);
+  border-radius: 0.3125em;
+}
+
+.review {
+  --image-size: 1.875em;
+
+  display: grid;
+  grid-gap: 0.625em;
+  grid-template-areas:
+    "image name title date rating"
+    "description description description description description"
+    "divider divider divider divider divider";
+  grid-template-columns: var(--image-size) auto 3fr auto auto;
+  align-items: center;
+}
+
+@media (width >= 23.5em) and (width <= 36em) {
+  .review {
+    grid-template-areas:
+      "image name rating"
+      "title title title"
+      "description description description"
+      "date date date"
+      "divider divider divider";
+    grid-template-columns: var(--image-size) 1fr 1fr;
+  }
+
+  .review__date,
+  .review__rating {
+    justify-self: end;
+  }
+}
+
+@media (width <= 23.4375em) {
+  .review {
+    grid-template-areas:
+      "image name"
+      "title title"
+      "rating rating"
+      "description description"
+      "date date"
+      "divider divider";
+    grid-template-columns: var(--image-size) 1fr;
+  }
+
+  .review__date {
+    justify-self: end;
+  }
+}
+
+.review__image {
+  grid-area: image;
+}
+
+.review__name {
+  grid-area: name;
+  font-weight: 700;
+}
+
+.review__title {
+  grid-area: title;
+}
+
+.review__date {
+  grid-area: date;
+}
+
+.review__rating {
+  grid-area: rating;
+}
+
+.review__description {
+  grid-area: description;
+  margin-bottom: 0.625em;
+  text-align: justify;
+}
+
+.review__divider {
+  grid-area: divider;
+  margin-bottom: 1.25em;
+  border-bottom: var(--divider);
+}

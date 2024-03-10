@@ -19,8 +19,123 @@
   padding: 1.875em;
 }
 
-.product:not(:last-of-type) {
-  margin-bottom: 1.875em;
+.product:not(:first-of-type) {
+  margin-top: 1.875em;
+}
+
+@media screen and (width <= 82.5em) {
+  .product {
+    grid-template-areas:
+      "img . title title title title title"
+      "img . tags tags tags tags tags"
+      "price-title price-title price-title . credit-title . rating-title"
+      "price-value price-value price-value . credit-value . rating-value"
+      "hr-1 hr-1 hr-1 hr-1 hr-1 hr-1 hr-1"
+      "description description description description description description description"
+      "characteristics characteristics characteristics characteristics characteristics characteristics characteristics"
+      "features features features features features features features"
+      "hr-2 hr-2 hr-2 hr-2 hr-2 hr-2 hr-2"
+      "actions actions actions actions actions actions actions";
+    grid-template-columns: var(--image-size) var(--image-title-gap) auto 2.5em auto 2.5em auto 1fr;
+  }
+
+  .product .product__characteristics {
+    padding: 0;
+  }
+
+  .product__features {
+    margin-top: 1em;
+  }
+}
+
+@media screen and (width >= 64.0625em) and (width <= 82.5em) {
+  .product__price-title,
+  .product__price,
+  .product__credit-title,
+  .product__credit,
+  .product__rating-title,
+  .product__rating {
+    justify-self: center;
+  }
+
+  .product__price-title,
+  .product__credit-title,
+  .product__rating-title,
+  .product__features {
+    margin-top: 1em;
+  }
+}
+
+@media screen and (width <= 64em) {
+  .product {
+    grid-template-areas:
+      "img . title"
+      "img . tags"
+      "price-title price-title price-value"
+      "credit-title credit-title credit-value"
+      "rating-title rating-title rating-value"
+      "hr-1 hr-1 hr-1"
+      "description description description"
+      "characteristics characteristics characteristics"
+      "features features features"
+      "hr-2 hr-2 hr-2"
+      "actions actions actions";
+    grid-template-columns: var(--image-size) var(--image-title-gap) 1fr;
+  }
+
+  .product__price-title,
+  .product__credit-title,
+  .product__rating-title {
+    align-self: center;
+  }
+
+  .product__price-title,
+  .product__credit-title,
+  .product__rating-title,
+  .product__price,
+  .product__credit,
+  .product__rating {
+    margin-block: 1em;
+  }
+}
+
+@media screen and (width <= 26.5625em) {
+  .product {
+    grid-template-areas:
+      "img img"
+      "title title"
+      "tags tags"
+      "price-title price-value"
+      "credit-title credit-value"
+      "rating-title rating-value"
+      "hr-1 hr-1"
+      "description description"
+      "characteristics characteristics"
+      "features features"
+      "hr-2 hr-2"
+      "actions actions";
+    grid-template-columns: var(--image-size) 1fr;
+  }
+
+  .product__title {
+    margin-block: 0.5em;
+  }
+
+  .product__tags {
+    margin-block: 0.4375em;
+  }
+
+  .product__price,
+  .product__credit,
+  .product__rating {
+    margin-left: 1em;
+  }
+
+  .product__button {
+    justify-content: center;
+    width: 100%;
+    padding: 1.5714em 2em;
+  }
 }
 
 .product__image {
@@ -203,119 +318,4 @@
 .features__description {
   line-height: 1.5;
   text-align: justify;
-}
-
-@media screen and (width <= 1320px) {
-  .product {
-    grid-template-areas:
-      "img . title title title title title"
-      "img . tags tags tags tags tags"
-      "price-title price-title price-title . credit-title . rating-title"
-      "price-value price-value price-value . credit-value . rating-value"
-      "hr-1 hr-1 hr-1 hr-1 hr-1 hr-1 hr-1"
-      "description description description description description description description"
-      "characteristics characteristics characteristics characteristics characteristics characteristics characteristics"
-      "features features features features features features features"
-      "hr-2 hr-2 hr-2 hr-2 hr-2 hr-2 hr-2"
-      "actions actions actions actions actions actions actions";
-    grid-template-columns: var(--image-size) var(--image-title-gap) auto 2.5em auto 2.5em auto 1fr;
-  }
-
-  .product .product__characteristics {
-    padding: 0;
-  }
-
-  .product__features {
-    margin-top: 1em;
-  }
-}
-
-@media screen and (width >= 1025px) and (width <= 1320px) {
-  .product__price-title,
-  .product__price,
-  .product__credit-title,
-  .product__credit,
-  .product__rating-title,
-  .product__rating {
-    justify-self: center;
-  }
-
-  .product__price-title,
-  .product__credit-title,
-  .product__rating-title,
-  .product__features {
-    margin-top: 1em;
-  }
-}
-
-@media screen and (width <= 1024px) {
-  .product {
-    grid-template-areas:
-      "img . title"
-      "img . tags"
-      "price-title price-title price-value"
-      "credit-title credit-title credit-value"
-      "rating-title rating-title rating-value"
-      "hr-1 hr-1 hr-1"
-      "description description description"
-      "characteristics characteristics characteristics"
-      "features features features"
-      "hr-2 hr-2 hr-2"
-      "actions actions actions";
-    grid-template-columns: var(--image-size) var(--image-title-gap) 1fr;
-  }
-
-  .product__price-title,
-  .product__credit-title,
-  .product__rating-title {
-    align-self: center;
-  }
-
-  .product__price-title,
-  .product__credit-title,
-  .product__rating-title,
-  .product__price,
-  .product__credit,
-  .product__rating {
-    margin-block: 1em;
-  }
-}
-
-@media screen and (width <= 425px) {
-  .product {
-    grid-template-areas:
-      "img img"
-      "title title"
-      "tags tags"
-      "price-title price-value"
-      "credit-title credit-value"
-      "rating-title rating-value"
-      "hr-1 hr-1"
-      "description description"
-      "characteristics characteristics"
-      "features features"
-      "hr-2 hr-2"
-      "actions actions";
-    grid-template-columns: var(--image-size) 1fr;
-  }
-
-  .product__title {
-    margin-block: 0.5em;
-  }
-
-  .product__tags {
-    margin-block: 0.4375em;
-  }
-
-  .product__price,
-  .product__credit,
-  .product__rating {
-    margin-left: 1em;
-  }
-
-  .product__button {
-    justify-content: center;
-    width: 100%;
-    padding: 1.5714em 2em;
-  }
 }
