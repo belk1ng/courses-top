@@ -152,7 +152,9 @@ const Product: FC<ProductProps> = ({ record, ...rest }) => {
           </Button>
         </section>
       </Card>
-      {reviewsOpen && <Reviews records={record.reviews} />}
+      {reviewsOpen && (
+        <Reviews productId={record._id} records={record.reviews} />
+      )}
     </>
   );
 };

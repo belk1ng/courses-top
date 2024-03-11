@@ -5,4 +5,5 @@ export interface RatingProps extends HTMLAttributes<HTMLDivElement> {
   setRating?: Dispatch<number>;
   ratingMax?: number;
   readonly?: boolean;
+  error?: string;
 }

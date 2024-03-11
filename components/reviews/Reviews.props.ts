@@ -4,4 +4,5 @@ import type { Product } from "@/typings/product";
 
 export interface ReviewsProps extends HTMLAttributes<HTMLDivElement> {
   records: Product["reviews"];
+  productId: string;
 }

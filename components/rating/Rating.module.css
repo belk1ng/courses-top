@@ -17,11 +17,16 @@
   color: var(--primary);
 }
 
+.star--error {
+  stroke: var(--error);
+}
+
 @media (hover: hover) {
   .star:hover:not(.star--readonly),
   .star:has(~ .star:hover):not(.star--readonly) {
     cursor: pointer;
     color: var(--button-contained-bg-hover);
+    stroke: none;
   }
 }
 
@@ -31,4 +36,9 @@
     cursor: pointer;
     color: var(--button-contained-bg-hover);
   }
+}
+
+.rating__error {
+  margin-top: 0.375em;
+  color: var(--error);
 }

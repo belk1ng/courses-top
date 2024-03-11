@@ -12,7 +12,12 @@ import Typography from "@/components/typography";
 import classes from "./Reviews.module.css";
 import type { ReviewsProps } from "./Reviews.props";
 
-const Reviews: FC<ReviewsProps> = ({ records, className, ...rest }) => {
+const Reviews: FC<ReviewsProps> = ({
+  records,
+  className,
+  productId,
+  ...rest
+}) => {
   return (
     <Card className={cn(classes.reviews, className)} {...rest}>
       {records.map((review) => (
@@ -44,7 +49,7 @@ const Reviews: FC<ReviewsProps> = ({ records, className, ...rest }) => {
           <div className={classes.review__divider} />
         </div>
       ))}
-      <ReviewForm />
+      <ReviewForm productId={productId} />
     </Card>
   );
 };

@@ -1,6 +1,7 @@
-.input {
+.input__field {
   display: block;
 
+  width: 100%;
   padding: 0.375em 0.75em;
 
   font-size: 1rem;
@@ -11,10 +12,38 @@
   box-shadow: 0 4px 4px 0 #0000000d;
 }
 
-.input:focus {
+.input__field:not(.input__field--error):focus {
   outline: 2px solid var(--primary);
 }
 
-.input::placeholder {
+.input__field::placeholder {
   color: var(--text-secondary);
+}
+
+@keyframes shake {
+  0% {
+    margin-left: 0;
+  }
+
+  25% {
+    margin-left: 0.5em;
+  }
+
+  75% {
+    margin-left: -0.5em;
+  }
+
+  100% {
+    margin-left: 0;
+  }
+}
+
+.input__field--error {
+  outline: 2px solid var(--error);
+  animation: shake 0.2s ease-in-out 0s 2;
+}
+
+.input__error {
+  margin-top: 0.375em;
+  color: var(--error);
 }
