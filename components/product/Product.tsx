@@ -32,7 +32,7 @@ const Product: FC<ProductProps> = ({ record, ...rest }) => {
           alt=""
           className={classes.product__image}
           height={70}
-          src="/placeholder.png"
+          src={record.image}
           width={70}
         />
         <Heading as="h2" className={classes.product__title}>
