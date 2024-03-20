@@ -9,9 +9,9 @@ import type { InputProps } from "./Input.props";
 const Input = forwardRef<HTMLInputElement, InputProps>(
   ({ className, error, ...rest }, ref) => {
     return (
-      <label className={className}>
+      <label>
         <input
-          className={cn(classes.input__field, {
+          className={cn(classes.input__field, className, {
             [classes["input__field--error"]]: error,
           })}
           ref={ref}
