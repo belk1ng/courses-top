@@ -1,6 +1,7 @@
 "use client";
 
 import cn from "classnames";
+import { motion } from "framer-motion";
 import Link from "next/link";
 import type { FC } from "react";
 
@@ -20,15 +21,53 @@ const NavList: FC<NavListProps> = ({ menuConfiguration }) => {
     toggleSubCategory,
   } = useMenu(menuConfiguration);
 
-  const endpoints = (endpoints: Endpoint[]) => (
-    <ul className={classes.nav__list}>
+  const subcategoryVariants = {
+    closed: {},
+    opened: {},
+  };
+
+  const endpointContainerVariants = {
+    closed: {
+      height: 0,
+      overflow: "hidden",
+      transition: {
+        when: "afterChildren",
+        staggerChildren: 0.025,
+      },
+    },
+    opened: {
+      height: "auto",
+      transition: {
+        when: "beforeChildren",
+        staggerChildren: 0.025,
+      },
+    },
+  };
+
+  const endpointVariants = {
+    closed: {
+      opacity: 0,
+      x: -30,
+    },
+    opened: {
+      opacity: 1,
+      x: 0,
+    },
+  };
+
+  const renderEndpoints = (endpoints: Endpoint[]) => (
+    <motion.ul
+      className={classes.nav__list}
+      variants={endpointContainerVariants}
+    >
       {endpoints.map((endpoint) => (
-        <li
+        <motion.li
           className={cn(classes.nav__item, classes["nav__item--endpoint"], {
             [classes["nav__item--active"]]: activeLink === endpoint.alias,
           })}
           key={endpoint._id}
           onClick={(event) => event.stopPropagation()}
+          variants={endpointVariants}
         >
           <Link
             className={classes.nav__label}
@@ -36,12 +75,12 @@ const NavList: FC<NavListProps> = ({ menuConfiguration }) => {
           >
             {endpoint.category}
           </Link>
-        </li>
+        </motion.li>
       ))}
-    </ul>
+    </motion.ul>
   );
 
-  const subMenu = (
+  const renderSubCategories = (
     rootCategoryAlias: string,
     subMenu: SubCategoryExtended[]
   ) => {
@@ -49,36 +88,42 @@ const NavList: FC<NavListProps> = ({ menuConfiguration }) => {
       subMenu &&
       subMenu.length > 0 && (
         <ul className={classes.nav__list}>
-          {subMenu.map((item) => (
-            <li
-              className={cn(
-                classes.nav__item,
-                classes["nav__item--category"],
-                item.isOpen ||
-                  activeSubCategory?._id?.secondCategory ===
-                    item._id.secondCategory
-                  ? classes["nav__item--opened"]
-                  : classes["nav__item--closed"]
-              )}
-              key={item._id.secondCategory}
-              onClick={
-                activeSubCategory?._id?.secondCategory !==
-                item._id.secondCategory
-                  ? (event) =>
-                      toggleSubCategory(
-                        event,
-                        rootCategoryAlias,
-                        item._id.secondCategory
-                      )
-                  : undefined
-              }
-            >
-              <span className={classes.nav__label}>
-                {item._id.secondCategory}
-              </span>
-              {endpoints(item.pages)}
-            </li>
-          ))}
+          {subMenu.map((item) => {
+            const isOpen =
+              item.isOpen ||
+              activeSubCategory?._id?.secondCategory === item._id.secondCategory
+                ? "opened"
+                : "closed";
+
+            return (
+              <motion.li
+                animate={isOpen}
+                className={cn(
+                  classes.nav__item,
+                  classes["nav__item--category"]
+                )}
+                initial={isOpen}
+                key={item._id.secondCategory}
+                onClick={
+                  activeSubCategory?._id?.secondCategory !==
+                  item._id.secondCategory
+                    ? (event) =>
+                        toggleSubCategory(
+                          event,
+                          rootCategoryAlias,
+                          item._id.secondCategory
+                        )
+                    : undefined
+                }
+                variants={subcategoryVariants}
+              >
+                <span className={classes.nav__label}>
+                  {item._id.secondCategory}
+                </span>
+                {renderEndpoints(item.pages)}
+              </motion.li>
+            );
+          })}
         </ul>
       )
     );
@@ -110,7 +155,7 @@ const NavList: FC<NavListProps> = ({ menuConfiguration }) => {
             {rootItem.icon}
             {rootItem.label}
           </span>
-          {subMenu(rootItem.alias, rootItem.subCategories)}
+          {renderSubCategories(rootItem.alias, rootItem.subCategories)}
         </li>
       ))}
     </ul>

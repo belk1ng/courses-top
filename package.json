@@ -13,6 +13,7 @@
   "dependencies": {
     "classnames": "2.5.1",
     "date-fns": "3.3.1",
+    "framer-motion": "11.0.18",
     "html-react-parser": "5.1.7",
     "next": "14.1.0",
     "react": "18",
