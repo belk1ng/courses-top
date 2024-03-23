@@ -1,15 +1,25 @@
+"use client";
+
 import cn from "classnames";
-import type { FC } from "react";
+import { motion } from "framer-motion";
+import type { MotionProps } from "framer-motion";
+import { forwardRef } from "react";
 
 import classes from "./Card.module.css";
 import type { CardProps } from "./Card.props";
 
-const Card: FC<CardProps> = ({ children, className, ...rest }) => {
-  return (
-    <div className={cn(classes.card, className)} {...rest}>
-      {children}
-    </div>
-  );
-};
+const Card = forwardRef<HTMLDivElement, CardProps & MotionProps>(
+  ({ children, className, ...rest }, ref) => {
+    return (
+      <div className={cn(classes.card, className)} ref={ref} {...rest}>
+        {children}
+      </div>
+    );
+  }
+);
 
-export default Card;
+Card.displayName = "Card";
+
+const MotionCard = motion<CardProps & MotionProps>(Card);
+
+export default MotionCard;

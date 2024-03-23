@@ -15,6 +15,8 @@ import type { SortableProductsProps } from "./SortableProducts.props";
 const SortableProducts: FC<SortableProductsProps> = ({ title, products }) => {
   const [state, dispatch] = useReducer(sortableReducer, products, init);
 
+  const productsExists = state.products.length > 0;
+
   return (
     <>
       <header className={classes.header}>
@@ -22,13 +24,15 @@ const SortableProducts: FC<SortableProductsProps> = ({ title, products }) => {
         <Tag color="info" size="medium">
           {products.length ?? 0}
         </Tag>
-        <Sortable field={state.order} onChange={dispatch} />
+        {productsExists && <Sortable field={state.order} onChange={dispatch} />}
       </header>
-      <section>
-        {state.products.map((product) => (
-          <Product key={product._id} record={product} />
-        ))}
-      </section>
+      {productsExists && (
+        <section>
+          {state.products.map((product) => (
+            <Product key={product._id} record={product} />
+          ))}
+        </section>
+      )}
     </>
   );
 };

@@ -1,6 +1,7 @@
 "use client";
 
 import cn from "classnames";
+import { MotionProps } from "framer-motion";
 import Image from "next/image";
 import { useState } from "react";
 import type { FC } from "react";
@@ -18,7 +19,7 @@ import numberFormat from "@/utils/numberFormat";
 import classes from "./Product.module.css";
 import type { ProductProps } from "./Product.props";
 
-const Product: FC<ProductProps> = ({ record, ...rest }) => {
+const Product: FC<ProductProps & MotionProps> = ({ record, ...rest }) => {
   const [reviewsOpen, setReviewsOpen] = useState(false);
 
   const toggleReviews = () => {
@@ -27,7 +28,7 @@ const Product: FC<ProductProps> = ({ record, ...rest }) => {
 
   return (
     <>
-      <Card {...rest} className={classes.product}>
+      <Card {...rest} className={classes.product} layout>
         <Image
           alt=""
           className={classes.product__image}
