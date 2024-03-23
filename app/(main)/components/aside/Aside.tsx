@@ -2,6 +2,7 @@ import cn from "classnames";
 import Image from "next/image";
 import Link from "next/link";
 import type { FC } from "react";
+import { Suspense } from "react";
 
 import Search from "@/app/(main)/resource/[alias]/components/search";
 
@@ -15,7 +16,9 @@ const Aside: FC<AsideProps> = ({ className, ...props }) => {
       <Link href="/">
         <Image alt="Logo" height="44" src="/logo.svg" width="159" />
       </Link>
-      <Search />
+      <Suspense>
+        <Search />
+      </Suspense>
       <Nav />
     </aside>
   );
