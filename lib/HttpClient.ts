@@ -1,3 +1,5 @@
+const SECONDS_IN_AN_HOUR = 60 * 60;
+
 class HttpClient {
   constructor(private baseURL: string) {}
 
@@ -11,6 +13,10 @@ class HttpClient {
         ...options?.headers,
       },
       ...options,
+      next: {
+        revalidate: SECONDS_IN_AN_HOUR,
+        ...options?.next,
+      },
     };
 
     const response = await fetch(`${this.baseURL}${uri}`, requestOptions);
