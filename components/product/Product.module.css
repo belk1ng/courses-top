@@ -192,6 +192,8 @@
 
 .product__rating-title {
   grid-area: rating-title;
+  cursor: pointer;
+  color: var(--primary);
 }
 
 .product__description {

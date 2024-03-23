@@ -3,7 +3,7 @@
 import cn from "classnames";
 import { MotionProps } from "framer-motion";
 import Image from "next/image";
-import { useState } from "react";
+import { useState, useRef } from "react";
 import type { FC } from "react";
 
 import Button from "@/components/button";
@@ -21,6 +21,18 @@ import type { ProductProps } from "./Product.props";
 
 const Product: FC<ProductProps & MotionProps> = ({ record, ...rest }) => {
   const [reviewsOpen, setReviewsOpen] = useState(false);
+
+  const reviewsRef = useRef<HTMLDivElement | null>(null);
+  const handleReviewsClick = () => {
+    setReviewsOpen(true);
+
+    if (reviewsRef.current) {
+      reviewsRef.current.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+    }
+  };
 
   const toggleReviews = () => {
     setReviewsOpen((prev) => !prev);
@@ -73,7 +85,10 @@ const Product: FC<ProductProps & MotionProps> = ({ record, ...rest }) => {
         <Typography className={classes["product__credit-title"]}>
           в кредит
         </Typography>
-        <Typography className={classes["product__rating-title"]}>
+        <Typography
+          className={classes["product__rating-title"]}
+          onClick={handleReviewsClick}
+        >
           {record.reviewCount}{" "}
           {declinationByNumber(record.reviewCount, [
             "отзыв",
@@ -153,9 +168,11 @@ const Product: FC<ProductProps & MotionProps> = ({ record, ...rest }) => {
           </Button>
         </section>
       </Card>
-      {reviewsOpen && (
-        <Reviews layout productId={record._id} records={record.reviews} />
-      )}
+      <div ref={reviewsRef}>
+        {reviewsOpen && (
+          <Reviews layout productId={record._id} records={record.reviews} />
+        )}
+      </div>
     </>
   );
 };
