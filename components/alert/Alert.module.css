@@ -30,6 +30,8 @@
 }
 
 .alert__close {
+  background-color: unset;
+  border: 0;
   cursor: pointer;
   position: absolute;
   top: 1em;

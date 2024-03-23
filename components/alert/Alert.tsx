@@ -3,6 +3,7 @@ import Image from "next/image";
 import type { FC } from "react";
 
 import Typography from "@/components/typography";
+import VisuallyHidden from "@/components/visually-hidden";
 import CloseIcon from "@/public/close.svg";
 
 import classes from "./Alert.module.css";
@@ -43,10 +44,10 @@ const Alert: FC<AlertProps> = ({
         <Typography className={classes.alert__text} size={14}>
           {text}
         </Typography>
-        <CloseIcon
-          className={classes.alert__close}
-          onClick={() => onClose(false)}
-        />
+        <button className={classes.alert__close}>
+          <VisuallyHidden>Скрыть уведомление</VisuallyHidden>
+          <CloseIcon onClick={() => onClose(false)} />
+        </button>
       </div>
     );
   }
