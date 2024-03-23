@@ -46,3 +46,11 @@
     border: var(--button-outlined-border-hover);
   }
 }
+
+.button:disabled,
+.button[disabled] {
+  border-color: hsl(0, 0%, 60%);
+  background-color: hsl(0, 0%, 80%);
+  color: hsl(0, 0%, 40%);
+  cursor: not-allowed;
+}

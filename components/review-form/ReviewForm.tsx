@@ -1,15 +1,17 @@
 "use client";
 
 import cn from "classnames";
-import Image from "next/image";
+import { useEffect, useState } from "react";
 import type { FC } from "react";
 import { Controller, useForm } from "react-hook-form";
 
+import Alert from "@/components/alert";
 import Button from "@/components/button";
 import Input from "@/components/input";
 import Rating from "@/components/rating";
 import Textarea from "@/components/textarea";
 import Typography from "@/components/typography";
+import ReviewApi from "@/lib/Review.api";
 
 import classes from "./ReviewForm.module.css";
 import type { ReviewFormProps } from "./ReviewForm.props";
@@ -22,12 +24,32 @@ interface ReviewFormValues {
 }
 
 const ReviewForm: FC<ReviewFormProps> = ({ productId, className, ...rest }) => {
-  const { formState, control, handleSubmit, register } =
+  const { formState, control, handleSubmit, register, reset } =
     useForm<ReviewFormValues>();
 
-  const onSubmit = (data: ReviewFormValues) => {
-    console.log("ProductId: ", productId);
-    console.log(data);
+  const [reviewCreatedSuccessfully, setReviewCreatedSuccessfully] = useState<
+    null | boolean
+  >(null);
+
+  const [isAlertVisible, setAlertVisible] = useState(false);
+
+  useEffect(() => {
+    if (!isAlertVisible) {
+      setReviewCreatedSuccessfully(null);
+    }
+  }, [isAlertVisible]);
+
+  const onSubmit = async (data: ReviewFormValues) => {
+    try {
+      await ReviewApi.createReview({ ...data, productId });
+      setReviewCreatedSuccessfully(true);
+      reset();
+    } catch (error) {
+      console.log(error);
+      setReviewCreatedSuccessfully(false);
+    } finally {
+      setAlertVisible(true);
+    }
   };
 
   return (
@@ -88,7 +110,11 @@ const ReviewForm: FC<ReviewFormProps> = ({ productId, className, ...rest }) => {
           rows={5}
         />
         <div className={classes.form__submit}>
-          <Button className={classes.form__button} type="submit">
+          <Button
+            className={classes.form__button}
+            disabled={formState.isSubmitting}
+            type="submit"
+          >
             Отправить
           </Button>
           <Typography size={14}>
@@ -97,21 +123,22 @@ const ReviewForm: FC<ReviewFormProps> = ({ productId, className, ...rest }) => {
           </Typography>
         </div>
       </form>
-      <div className={cn(classes.form__success, classes.alert)}>
-        <Image
-          alt="Закрыть уведомление"
-          className={classes.alert__icon}
-          height={12}
-          src="/reviewClose.svg"
-          width={12}
-        />
-        <Typography className={classes.alert__title}>
-          Ваш отзыв отправлен!
-        </Typography>
-        <Typography className={classes.alert__description}>
-          Спасибо, ваш отзыв будет опубликован после проверки.
-        </Typography>
-      </div>
+      <Alert
+        className={classes.form__alert}
+        onClose={setAlertVisible}
+        text="Спасибо, ваш отзыв будет опубликован после проверки."
+        title="Ваш отзыв отправлен!"
+        variant="success"
+        visible={isAlertVisible && reviewCreatedSuccessfully === true}
+      />
+      <Alert
+        className={classes.form__alert}
+        onClose={setAlertVisible}
+        text="Произошла непредвиденная ошибка, пожалуйста, повторите попытку позже."
+        title="Произошла ошибка!"
+        variant="error"
+        visible={isAlertVisible && reviewCreatedSuccessfully === false}
+      />
     </section>
   );
 };

@@ -1,0 +1,49 @@
+.alert {
+  position: relative;
+  font-size: 1rem;
+  padding: 1em 3em;
+  border-radius: 0.5em;
+  border: 1px solid;
+  border-color: var(--alert-accent-color);
+}
+
+.alert__title {
+  color: var(--alert-accent-color);
+  font-weight: 700;
+  line-height: 1.25;
+  font-size: 1em;
+  margin-bottom: 0.5em;
+}
+
+.alert__text {
+  font-size: 0.875em;
+}
+
+.alert__icon {
+  position: absolute;
+  top: 1em;
+  left: 1em;
+}
+
+.alert__close {
+  position: absolute;
+  top: 1em;
+  right: 1em;
+  cursor: pointer;
+}
+
+.alert--info {
+  --alert-accent-color: hsl(206, 79%, 38%);
+}
+
+.alert--warning {
+  --alert-accent-color: hsl(47, 100%, 50%);
+}
+
+.alert--success {
+  --alert-accent-color: hsl(172, 72%, 34%);
+}
+
+.alert--error {
+  --alert-accent-color: hsl(11, 100%, 59%);
+}
