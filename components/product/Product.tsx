@@ -154,7 +154,7 @@ const Product: FC<ProductProps & MotionProps> = ({ record, ...rest }) => {
         </section>
       </Card>
       {reviewsOpen && (
-        <Reviews productId={record._id} records={record.reviews} />
+        <Reviews layout productId={record._id} records={record.reviews} />
       )}
     </>
   );

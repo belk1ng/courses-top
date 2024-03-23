@@ -44,9 +44,9 @@ const Alert: FC<AlertProps> = ({
         <Typography className={classes.alert__text} size={14}>
           {text}
         </Typography>
-        <button className={classes.alert__close}>
+        <button className={classes.alert__close} onClick={() => onClose(false)}>
           <VisuallyHidden>Скрыть уведомление</VisuallyHidden>
-          <CloseIcon onClick={() => onClose(false)} />
+          <CloseIcon />
         </button>
       </div>
     );

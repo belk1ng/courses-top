@@ -1,10 +1,13 @@
+"use client";
+
 import cn from "classnames";
+import { motion, MotionProps } from "framer-motion";
 import type { FC } from "react";
 
 import classes from "./Button.module.css";
 import type { ButtonProps } from "./Button.props";
 
-const Button: FC<ButtonProps> = ({
+const Button: FC<ButtonProps & MotionProps> = ({
   variant = "contained",
   type = "button",
   startIcon,
@@ -14,7 +17,7 @@ const Button: FC<ButtonProps> = ({
   ...rest
 }) => {
   return (
-    <button
+    <motion.button
       className={cn(
         classes.button,
         {
@@ -23,13 +26,16 @@ const Button: FC<ButtonProps> = ({
         },
         className
       )}
+      transition={{ duration: 0.01 }}
       type={type}
+      whileHover={{ scale: 1.05 }}
+      whileTap={{ scale: 0.95 }}
       {...rest}
     >
       {startIcon && startIcon}
       {children}
       {endIcon && endIcon}
-    </button>
+    </motion.button>
   );
 };
 
