@@ -1,18 +1,22 @@
 .alert {
   position: relative;
-  font-size: 1rem;
+
   padding: 1em 3em;
-  border-radius: 0.5em;
+
+  font-size: 1rem;
+
   border: 1px solid;
   border-color: var(--alert-accent-color);
+  border-radius: 0.5em;
 }
 
 .alert__title {
-  color: var(--alert-accent-color);
+  margin-bottom: 0.5em;
+
+  font-size: 1em;
   font-weight: 700;
   line-height: 1.25;
-  font-size: 1em;
-  margin-bottom: 0.5em;
+  color: var(--alert-accent-color);
 }
 
 .alert__text {
@@ -26,24 +30,24 @@
 }
 
 .alert__close {
+  cursor: pointer;
   position: absolute;
   top: 1em;
   right: 1em;
-  cursor: pointer;
 }
 
 .alert--info {
-  --alert-accent-color: hsl(206, 79%, 38%);
+  --alert-accent-color: hsl(206deg 79% 38%);
 }
 
 .alert--warning {
-  --alert-accent-color: hsl(47, 100%, 50%);
+  --alert-accent-color: hsl(47deg 100% 50%);
 }
 
 .alert--success {
-  --alert-accent-color: hsl(172, 72%, 34%);
+  --alert-accent-color: hsl(172deg 72% 34%);
 }
 
 .alert--error {
-  --alert-accent-color: hsl(11, 100%, 59%);
+  --alert-accent-color: hsl(11deg 100% 59%);
 }

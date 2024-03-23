@@ -10,8 +10,10 @@
   display: flex;
   gap: 1.1111em;
   align-items: center;
-  transition: color var(--transition);
+
   padding-left: 1.7777em;
+
+  transition: color var(--transition);
 }
 
 a.nav__label {
