@@ -1,7 +1,8 @@
 "use client";
 
 import cn from "classnames";
-import { MotionProps } from "framer-motion";
+import type { MotionProps } from "framer-motion";
+import { motion } from "framer-motion";
 import Image from "next/image";
 import { useState, useRef } from "react";
 import type { FC } from "react";
@@ -26,16 +27,31 @@ const Product: FC<ProductProps & MotionProps> = ({ record, ...rest }) => {
   const handleReviewsClick = () => {
     setReviewsOpen(true);
 
-    if (reviewsRef.current) {
-      reviewsRef.current.scrollIntoView({
-        behavior: "smooth",
-        block: "start",
-      });
-    }
+    setTimeout(() => {
+      if (reviewsRef.current) {
+        reviewsRef.current.scrollIntoView({
+          behavior: "smooth",
+          block: "start",
+        });
+      }
+    });
   };
 
   const toggleReviews = () => {
     setReviewsOpen((prev) => !prev);
+  };
+
+  const reviewsVariants = {
+    visible: {
+      opacity: 1,
+      height: "auto",
+      marginTop: "-1em",
+    },
+    hidden: {
+      height: 0,
+      overflow: "hidden",
+      opacity: 0,
+    },
   };
 
   return (
@@ -155,6 +171,7 @@ const Product: FC<ProductProps & MotionProps> = ({ record, ...rest }) => {
           </section>
         )}
         <hr className={classes.product__divider} />
+        {/*TODO: Make only the section (with Reviews if possible) as client component*/}
         <section className={classes.product__actions}>
           <Button className={classes.product__button} variant="contained">
             Узнать подробнее
@@ -168,11 +185,14 @@ const Product: FC<ProductProps & MotionProps> = ({ record, ...rest }) => {
           </Button>
         </section>
       </Card>
-      <div ref={reviewsRef}>
-        {reviewsOpen && (
-          <Reviews layout productId={record._id} records={record.reviews} />
-        )}
-      </div>
+      <motion.div
+        animate={reviewsOpen ? "visible" : "hidden"}
+        initial="hidden"
+        ref={reviewsRef}
+        variants={reviewsVariants}
+      >
+        <Reviews layout productId={record._id} records={record.reviews} />
+      </motion.div>
     </>
   );
 };
