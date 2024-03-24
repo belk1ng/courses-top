@@ -10,6 +10,17 @@
   margin-bottom: 3.125em;
 }
 
+@media screen and (width <= 43.9375em) {
+  .header,
+  .header ~ * {
+    margin-bottom: 2em;
+  }
+
+  .sortable__product {
+    padding: 1em;
+  }
+}
+
 .seo {
   display: grid;
   color: var(--text-primary);

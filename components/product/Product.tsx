@@ -20,7 +20,11 @@ import numberFormat from "@/utils/numberFormat";
 import classes from "./Product.module.css";
 import type { ProductProps } from "./Product.props";
 
-const Product: FC<ProductProps & MotionProps> = ({ record, ...rest }) => {
+const Product: FC<ProductProps & MotionProps> = ({
+  record,
+  className,
+  ...rest
+}) => {
   const [reviewsOpen, setReviewsOpen] = useState(false);
 
   const reviewsRef = useRef<HTMLDivElement | null>(null);
@@ -45,7 +49,7 @@ const Product: FC<ProductProps & MotionProps> = ({ record, ...rest }) => {
     visible: {
       opacity: 1,
       height: "auto",
-      marginTop: "-1em",
+      marginTop: "-0.3em",
     },
     hidden: {
       height: 0,
@@ -56,7 +60,7 @@ const Product: FC<ProductProps & MotionProps> = ({ record, ...rest }) => {
 
   return (
     <>
-      <Card {...rest} className={classes.product} layout>
+      <Card {...rest} className={cn(classes.product, className)} layout>
         <Image
           alt=""
           className={classes.product__image}

@@ -68,14 +68,14 @@
   justify-content: center;
 }
 
-@media screen and (width <= 925px) {
+@media screen and (width <= 57.8125em) {
   .hh__content {
     grid-template-columns: 1fr;
     grid-template-rows: repeat(2, 1fr);
   }
 }
 
-@media screen and (width <= 550px) {
+@media screen and (width <= 34.375em) {
   .hh__content {
     grid-template-columns: 1fr;
     grid-template-rows: 1fr 3fr;

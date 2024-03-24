@@ -35,6 +35,11 @@
   .button--outlined:hover {
     border: var(--button-outlined-border-hover);
   }
+
+  .button--icon:hover {
+    background-color: var(--primary);
+    color: var(--button-contained-color);
+  }
 }
 
 @media (hover: none) {
@@ -45,6 +50,11 @@
   .button--outlined:active {
     border: var(--button-outlined-border-hover);
   }
+
+  .button--icon:active {
+    background-color: var(--primary);
+    color: var(--button-contained-color);
+  }
 }
 
 .button:disabled,
@@ -53,4 +63,20 @@
   color: hsl(0deg 0% 40%);
   background-color: hsl(0deg 0% 80%);
   border-color: hsl(0deg 0% 60%);
+}
+
+.button--icon {
+  width: 3.5em;
+  aspect-ratio: 1;
+  border-radius: 0.7142em;
+  padding: 0.7142em;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background-color: var(--button-contained-color);
+  color: var(--primary);
+  border: 0;
+  box-shadow: 0 4px 4px 0 hsla(0, 0%, 0%, 0.05);
 }

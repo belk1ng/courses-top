@@ -18,14 +18,7 @@ const Button: FC<ButtonProps & MotionProps> = ({
 }) => {
   return (
     <motion.button
-      className={cn(
-        classes.button,
-        {
-          [classes["button--contained"]]: variant === "contained",
-          [classes["button--outlined"]]: variant === "outlined",
-        },
-        className
-      )}
+      className={cn(classes.button, classes[`button--${variant}`], className)}
       transition={{ duration: 0.01 }}
       type={type}
       whileHover={{ scale: 1.05 }}

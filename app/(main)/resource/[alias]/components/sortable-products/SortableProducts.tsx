@@ -29,7 +29,11 @@ const SortableProducts: FC<SortableProductsProps> = ({ title, products }) => {
       {productsExists && (
         <section>
           {state.products.map((product) => (
-            <Product key={product._id} record={product} />
+            <Product
+              className={classes.sortable__product}
+              key={product._id}
+              record={product}
+            />
           ))}
         </section>
       )}
