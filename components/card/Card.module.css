@@ -1,6 +1,9 @@
 .card {
   padding: 1em;
+
   font-size: 1.25rem;
+
+  background-color: hsl(0deg 0% 100%);
   border-radius: 0.25em;
   box-shadow: 0 4px 4px 0 hsl(0deg 0% 0% / 5%);
 }

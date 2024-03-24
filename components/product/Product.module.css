@@ -191,8 +191,8 @@
 }
 
 .product__rating-title {
-  grid-area: rating-title;
   cursor: pointer;
+  grid-area: rating-title;
   color: var(--primary);
 }
 

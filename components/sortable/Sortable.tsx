@@ -28,13 +28,18 @@ const ORDER_FIELDS: {
   },
 ];
 
-const Sortable: FC<SortableProps> = ({ field, onChange }) => {
+const Sortable: FC<SortableProps> = ({
+  field,
+  onChangeField,
+  className,
+  ...rest
+}) => {
   const setSort = (action: SortableActionType) => {
-    onChange(action);
+    onChangeField(action);
   };
 
   return (
-    <ul className={classes.sortable}>
+    <ul className={cn(classes.sortable, className)} {...rest}>
       {ORDER_FIELDS.map(({ label, fieldId, action }) => (
         <li
           className={classes.sortable__item}

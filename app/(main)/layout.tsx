@@ -21,7 +21,9 @@ interface Props {
 const RootLayout: FC<Props> = ({ children }) => (
   <html lang="ru">
     <body className={cn(roboto.className, classes.layout)}>
-      <Header className={classes.layout__header} />
+      <Header className={classes.layout__header}>
+        <Aside />
+      </Header>
       <Aside className={classes.layout__aside} />
       <main className={classes.layout__main}>{children}</main>
       <Footer className={classes.layout__footer} />

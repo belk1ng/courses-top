@@ -1,20 +1,35 @@
 .header {
-  font-size: 1rem;
-
-  grid-template-columns: 1fr auto;
-  align-items: center;
   grid-gap: 0.875em;
+  grid-template-areas: "logo . burger";
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+
   padding: 1em;
+
+  font-size: 1rem;
 }
 
-.header__aside {
+.header__logo {
+  grid-area: logo;
+}
+
+.header__button {
+  z-index: 1001;
+  grid-area: burger;
+}
+
+.header__menu {
   position: fixed;
-  left: 0;
-  right: 0;
-  top: 0;
-  height: 100dvh;
   z-index: 1000;
+  top: 0;
+  right: 0;
+  left: 0;
+
   overflow-y: auto;
-  background-color: var(--bg-color);
+  overscroll-behavior: contain;
+
+  height: 100dvh;
   padding: 1em 2em;
+
+  background-color: var(--bg-color);
 }

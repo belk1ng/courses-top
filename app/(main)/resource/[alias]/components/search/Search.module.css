@@ -2,15 +2,16 @@
   position: relative;
 }
 
-.search__input {
+input.search__input {
   width: 100%;
-  padding-right: 35px;
+  padding-right: 2.1875em;
+  padding-block: 0.5em;
 }
 
 button.search__button {
   position: absolute;
   top: 50%;
-  right: 0.3em;
+  right: 0.5em;
   translate: 0 -50%;
 
   padding: 0.35em;

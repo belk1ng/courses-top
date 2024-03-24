@@ -53,5 +53,5 @@
 }
 
 .alert--error {
-  --alert-accent-color: hsl(11deg 100% 59%);
+  --alert-accent-color: var(--error);
 }

@@ -19,6 +19,11 @@
   .sortable__product {
     padding: 1em;
   }
+
+  .header__title,
+  .header__sortable {
+    grid-column: span 2;
+  }
 }
 
 .seo {

@@ -1,4 +1,4 @@
-import type { Dispatch } from "react";
+import type { Dispatch, HTMLAttributes } from "react";
 
 import type { SortableActionType } from "./Sortable.reducer";
 
@@ -7,7 +7,7 @@ export enum SortableValues {
   Price,
 }
 
-export interface SortableProps {
+export interface SortableProps extends HTMLAttributes<HTMLUListElement> {
   field: SortableValues;
-  onChange: Dispatch<SortableActionType>;
+  onChangeField: Dispatch<SortableActionType>;
 }

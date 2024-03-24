@@ -20,11 +20,19 @@ const SortableProducts: FC<SortableProductsProps> = ({ title, products }) => {
   return (
     <>
       <header className={classes.header}>
-        <Heading as="h1">{title}</Heading>
-        <Tag color="info" size="medium">
+        <Heading as="h1" className={classes.header__title}>
+          {title}
+        </Heading>
+        <Tag className={classes.header__counter} color="info" size="medium">
           {products.length ?? 0}
         </Tag>
-        {productsExists && <Sortable field={state.order} onChange={dispatch} />}
+        {productsExists && (
+          <Sortable
+            className={classes.header__sortable}
+            field={state.order}
+            onChangeField={dispatch}
+          />
+        )}
       </header>
       {productsExists && (
         <section>

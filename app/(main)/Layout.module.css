@@ -9,6 +9,10 @@
     / auto var(--aside-width) minmax(var(--min-width), var(--max-width)) auto;
 }
 
+.layout--noscroll {
+  overflow: hidden;
+}
+
 .layout__header {
   display: none;
   grid-area: header;
@@ -54,4 +58,17 @@
   .layout > .layout__aside {
     display: none;
   }
+}
+
+.layout__aside--mobile {
+  position: fixed;
+  z-index: 1000;
+  inset: 0;
+  inset: 0;
+
+  overflow-y: auto;
+
+  margin-top: 0;
+
+  background-color: var(--bg-color);
 }
