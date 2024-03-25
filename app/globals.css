@@ -1,11 +1,11 @@
 :root {
   --bg-color: hsl(220deg 18% 97%);
-  --primary: hsl(252deg 97% 66%);
+  --primary: hsl(252deg 89.94% 64.28%);
   --error: hsl(11deg 100% 59%);
-  --success: hsl(155deg 74% 44%);
+  --success: hsl(98deg 28.13% 31.16%);
   --success-light: hsl(155deg 77% 88%);
   --text-primary: hsl(215deg 14% 27%);
-  --text-secondary: hsl(180deg 0% 53%);
+  --text-secondary: hsl(0deg 0% 44.05%);
   --divider: 1px solid hsl(0deg 0% 77%);
   --button-contained-bg: hsl(252deg 97% 66%);
   --button-contained-bg-hover: hsl(252deg 82% 55%);

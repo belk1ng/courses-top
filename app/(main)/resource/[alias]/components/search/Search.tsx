@@ -44,6 +44,7 @@ const Search: FC = () => {
     <label className={classes.search}>
       <Input
         className={classes.search__input}
+        enterKeyHint="search"
         onChange={onInputChange}
         onKeyDown={onInputKeyDown}
         placeholder="Поиск..."

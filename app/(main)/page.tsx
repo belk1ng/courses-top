@@ -1,3 +1,5 @@
+import type { Metadata, Viewport } from "next";
+
 import Button from "@/components/button";
 import Heading from "@/components/heading";
 import Input from "@/components/input";
@@ -6,9 +8,15 @@ import Tag from "@/components/tag";
 import Textarea from "@/components/textarea";
 import Typography from "@/components/typography";
 
-export const metadata = {
+export const metadata: Metadata = {
   title: "Тайтл первой страницы",
   description: "Описание первой страницы",
+};
+
+export const viewport: Viewport = {
+  initialScale: 1,
+  maximumScale: 1,
+  width: "device-width",
 };
 
 const Home = () => {

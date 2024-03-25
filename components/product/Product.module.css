@@ -305,7 +305,7 @@
 }
 
 .features__block--green {
-  --characteristics-modifier: var(--success);
+  --characteristics-modifier: var(--success-light);
 }
 
 .features__block--red {
