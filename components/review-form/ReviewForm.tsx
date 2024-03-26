@@ -1,7 +1,7 @@
 "use client";
 
 import cn from "classnames";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import type { FC } from "react";
 import { Controller, useForm } from "react-hook-form";
 
@@ -23,7 +23,12 @@ interface ReviewFormValues {
   rating: number;
 }
 
-const ReviewForm: FC<ReviewFormProps> = ({ productId, className, ...rest }) => {
+const ReviewForm: FC<ReviewFormProps> = ({
+  productId,
+  className,
+  opened,
+  ...rest
+}) => {
   const { formState, control, handleSubmit, register, reset } =
     useForm<ReviewFormValues>();
 
@@ -33,11 +38,19 @@ const ReviewForm: FC<ReviewFormProps> = ({ productId, className, ...rest }) => {
 
   const [isAlertVisible, setAlertVisible] = useState(false);
 
+  const formRef = useRef<HTMLFormElement | null>(null);
+
   useEffect(() => {
     if (!isAlertVisible) {
       setReviewCreatedSuccessfully(null);
     }
   }, [isAlertVisible]);
+
+  useEffect(() => {
+    if (opened) {
+      formRef.current?.focus();
+    }
+  }, [opened]);
 
   const onSubmit = async (data: ReviewFormValues) => {
     try {
@@ -57,6 +70,8 @@ const ReviewForm: FC<ReviewFormProps> = ({ productId, className, ...rest }) => {
       <form
         className={cn(className, classes.form)}
         onSubmit={handleSubmit(onSubmit)}
+        ref={formRef}
+        tabIndex={opened ? 0 : -1}
         {...rest}
       >
         <Input
@@ -66,6 +81,7 @@ const ReviewForm: FC<ReviewFormProps> = ({ productId, className, ...rest }) => {
           className={classes.form__name}
           error={formState.errors.name?.message}
           placeholder="Имя"
+          tabIndex={opened ? 0 : -1}
         />
         <Input
           {...register("title", {
@@ -74,6 +90,7 @@ const ReviewForm: FC<ReviewFormProps> = ({ productId, className, ...rest }) => {
           className={classes.form__title}
           error={formState.errors.title?.message}
           placeholder="Заголовок отзыва"
+          tabIndex={opened ? 0 : -1}
         />
         <div
           className={cn(classes.form__rating, {
@@ -88,6 +105,7 @@ const ReviewForm: FC<ReviewFormProps> = ({ productId, className, ...rest }) => {
               <Rating
                 error={formState.errors.rating?.message}
                 rating={field.value}
+                readonly={!opened}
                 ref={field.ref}
                 setRating={field.onChange}
               />
@@ -108,11 +126,13 @@ const ReviewForm: FC<ReviewFormProps> = ({ productId, className, ...rest }) => {
           error={formState.errors.description?.message}
           placeholder="Текст отзыва"
           rows={5}
+          tabIndex={opened ? 0 : -1}
         />
         <div className={classes.form__submit}>
           <Button
             className={classes.form__button}
             disabled={formState.isSubmitting}
+            tabIndex={opened ? 0 : -1}
             type="submit"
           >
             Отправить

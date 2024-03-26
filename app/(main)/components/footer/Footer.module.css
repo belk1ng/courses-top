@@ -22,8 +22,20 @@ p.footer__typography,
   transition: color 0.25s;
 }
 
-.footer__link:hover {
-  color: hsl(0deg 0% 92%);
+@media (hover: hover) {
+  .footer__link:hover {
+    color: hsl(0deg 0% 92%);
+  }
+}
+
+@media (hover: none) {
+  .footer__link:active {
+    color: hsl(0deg 0% 92%);
+  }
+}
+
+.footer__link:focus-within {
+  outline-color: var(--bg-color);
 }
 
 @media screen and (width <= 49.1875em) {

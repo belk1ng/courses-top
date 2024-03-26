@@ -15,7 +15,7 @@ import classes from "./Reviews.module.css";
 import type { ReviewsProps } from "./Reviews.props";
 
 const Reviews = forwardRef<HTMLDivElement, ReviewsProps & MotionProps>(
-  ({ records, className, productId, ...rest }, ref) => {
+  ({ records, className, productId, opened, ...rest }, ref) => {
     return (
       <Card className={cn(classes.reviews, className)} {...rest} ref={ref}>
         {records.map((review) => (
@@ -47,7 +47,7 @@ const Reviews = forwardRef<HTMLDivElement, ReviewsProps & MotionProps>(
             <div className={classes.review__divider} />
           </div>
         ))}
-        <ReviewForm productId={productId} />
+        <ReviewForm opened={opened} productId={productId} />
       </Card>
     );
   }

@@ -194,6 +194,9 @@
   cursor: pointer;
   grid-area: rating-title;
   color: var(--primary);
+  border: 0;
+  background-color: unset;
+  align-self: start;
 }
 
 .product__description {

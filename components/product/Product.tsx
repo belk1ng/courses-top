@@ -28,6 +28,7 @@ const Product: FC<ProductProps & MotionProps> = ({
   const [reviewsOpen, setReviewsOpen] = useState(false);
 
   const reviewsRef = useRef<HTMLDivElement | null>(null);
+
   const handleReviewsClick = () => {
     setReviewsOpen(true);
 
@@ -105,7 +106,7 @@ const Product: FC<ProductProps & MotionProps> = ({
         <Typography className={classes["product__credit-title"]}>
           в кредит
         </Typography>
-        <Typography
+        <button
           className={classes["product__rating-title"]}
           onClick={handleReviewsClick}
         >
@@ -115,7 +116,7 @@ const Product: FC<ProductProps & MotionProps> = ({
             "отзыва",
             "отзывов",
           ])}
-        </Typography>
+        </button>
         <hr className={classes.product__divider} />
         <Typography className={classes.product__description}>
           {record.description}
@@ -195,7 +196,12 @@ const Product: FC<ProductProps & MotionProps> = ({
         ref={reviewsRef}
         variants={reviewsVariants}
       >
-        <Reviews layout productId={record._id} records={record.reviews} />
+        <Reviews
+          layout
+          opened={reviewsOpen}
+          productId={record._id}
+          records={record.reviews}
+        />
       </motion.div>
     </>
   );

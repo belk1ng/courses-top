@@ -1,3 +1,21 @@
+.skiplink {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  padding: 0.625em 1em;
+  color: hsl(0, 0%, 100%);
+  background: var(--primary);
+  transform: translateY(-100%);
+  text-decoration: none;
+  border: 0;
+  border-radius: 0.25em;
+}
+
+.skiplink:focus-visible {
+  transform: translateY(20%);
+}
+
 .header {
   display: grid;
   grid-gap: 1.1875em;
