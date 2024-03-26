@@ -73,6 +73,11 @@ svg * {
   transition-property: fill, stroke;
 }
 
+*:focus-visible {
+  outline: 2px dashed var(--primary);
+  outline-offset: 2px;
+}
+
 @media (prefers-reduced-motion: reduce) {
   * {
     scroll-behavior: auto !important;

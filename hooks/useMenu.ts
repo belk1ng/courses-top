@@ -1,11 +1,14 @@
-import { usePathname } from "next/navigation";
-import type { MouseEvent } from "react";
+import { usePathname, useRouter } from "next/navigation";
+import type { SyntheticEvent, KeyboardEvent } from "react";
 import { useState, useEffect } from "react";
 
 import type { RootCategory } from "@/app/(main)/components/nav/nav-list/NavList.props";
+import spaceOrEnterPressed from "@/utils/spaceOrEnterPressed";
 
 const useMenu = (menuConfiguration: RootCategory[]) => {
   const [menu, setMenu] = useState(menuConfiguration);
+
+  const router = useRouter();
 
   const pathname = usePathname();
   const pathnameEndpointAlias = (pathname.match(/(\w[-_]*)+/g) || [])[1] ?? "";
@@ -87,7 +90,7 @@ const useMenu = (menuConfiguration: RootCategory[]) => {
   };
 
   const toggleSubCategory = (
-    event: MouseEvent<HTMLLIElement>,
+    event: SyntheticEvent<HTMLElement>,
     categoryAlias: string,
     subCategoryId: string
   ) => {
@@ -112,6 +115,37 @@ const useMenu = (menuConfiguration: RootCategory[]) => {
     }
   };
 
+  const handleRootCategoryKeyDown = (
+    event: KeyboardEvent<HTMLSpanElement>,
+    categoryAlias: string
+  ) => {
+    const isSpaceOrEnterPressed = spaceOrEnterPressed(event);
+    if (isSpaceOrEnterPressed) {
+      toggleRootCategory(categoryAlias);
+    }
+  };
+
+  const handleSubCategoryKeyDown = (
+    event: KeyboardEvent<HTMLSpanElement>,
+    categoryAlias: string,
+    subCategoryId: string
+  ) => {
+    const isSpaceOrEnterPressed = spaceOrEnterPressed(event);
+    if (isSpaceOrEnterPressed) {
+      toggleSubCategory(event, categoryAlias, subCategoryId);
+    }
+  };
+
+  const handleEndpointKeyDown = (
+    event: KeyboardEvent<HTMLAnchorElement>,
+    endpoint: string
+  ) => {
+    const isSpaceOrEnterPressed = spaceOrEnterPressed(event);
+    if (isSpaceOrEnterPressed) {
+      router.push(endpoint);
+    }
+  };
+
   return {
     menu,
     activeRootCategory,
@@ -119,6 +153,9 @@ const useMenu = (menuConfiguration: RootCategory[]) => {
     activeLink: pathnameEndpointAlias,
     toggleRootCategory,
     toggleSubCategory,
+    handleRootCategoryKeyDown,
+    handleSubCategoryKeyDown,
+    handleEndpointKeyDown,
   };
 };
 

@@ -7,13 +7,16 @@
   font-size: 1rem;
   color: var(--text-primary);
 
-  border: 0;
+  border: 1px solid transparent;
   border-radius: 0.375em;
   box-shadow: 0 4px 4px 0 #0000000d;
+
+  transition: border-color var(--transition);
 }
 
+.input__field:not(.input__field--error):hover,
 .input__field:not(.input__field--error):focus {
-  outline: 2px solid var(--primary);
+  border-color: var(--primary);
 }
 
 .input__field::placeholder {
@@ -39,7 +42,7 @@
 }
 
 .input__field--error {
-  outline: 2px solid var(--error);
+  border-color: var(--error);
   animation: shake 0.2s ease-in-out 0s 2;
 }
 

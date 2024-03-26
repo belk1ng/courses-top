@@ -7,6 +7,7 @@ import type { FC, ChangeEvent, KeyboardEvent } from "react";
 
 import Button from "@/components/button";
 import Input from "@/components/input";
+import VisuallyHidden from "@/components/visually-hidden";
 
 import classes from "./Search.module.css";
 
@@ -47,11 +48,12 @@ const Search: FC = () => {
         enterKeyHint="search"
         onChange={onInputChange}
         onKeyDown={onInputKeyDown}
-        placeholder="Поиск..."
+        placeholder="Поиск по сайту"
         value={searchString}
       />
       <Button className={classes.search__button} onClick={handleNavigate}>
-        <Image alt="Иконка поиска" height={13} src="/search.svg" width={13} />
+        <VisuallyHidden>Поиск</VisuallyHidden>
+        <Image alt="" height={13} src="/search.svg" width={13} />
       </Button>
     </label>
   );

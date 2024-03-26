@@ -305,7 +305,7 @@
 }
 
 .features__block--green {
-  --characteristics-modifier: var(--success-light);
+  --characteristics-modifier: hsl(155deg 68.63% 64.18%);
 }
 
 .features__block--red {

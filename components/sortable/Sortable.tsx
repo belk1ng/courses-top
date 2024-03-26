@@ -49,13 +49,14 @@ const Sortable: FC<SortableProps> = ({
           {field === fieldId && (
             <Image alt="" height={24} src="/descOrder.svg" width={24} />
           )}
-          <Typography
+          <button
             className={cn(classes.sortable__field, {
               [classes["sortable__field--active"]]: field === fieldId,
             })}
+            onClick={() => setSort(action)}
           >
             {label}
-          </Typography>
+          </button>
         </li>
       ))}
     </ul>

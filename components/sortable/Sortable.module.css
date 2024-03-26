@@ -16,7 +16,13 @@
 
 .sortable__field {
   font-size: inherit;
+  background-color: unset;
+  border: 0;
   transition: color var(--transition);
+}
+
+.sortable__field:focus-within {
+  color: var(--primary);
 }
 
 @media (hover: hover) {

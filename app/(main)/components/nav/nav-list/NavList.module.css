@@ -21,6 +21,11 @@ a.nav__label {
   text-decoration: none;
 }
 
+.nav__label:focus-visible {
+  outline: 2px dashed var(--primary);
+  outline-offset: -3px;
+}
+
 @media (hover: hover) {
   .nav__item--active > .nav__label:hover {
     cursor: default;

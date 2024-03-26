@@ -19,6 +19,9 @@ const NavList: FC<NavListProps> = ({ menuConfiguration }) => {
     activeLink,
     toggleRootCategory,
     toggleSubCategory,
+    handleRootCategoryKeyDown,
+    handleSubCategoryKeyDown,
+    handleEndpointKeyDown,
   } = useMenu(menuConfiguration);
 
   const subcategoryVariants = {
@@ -55,7 +58,7 @@ const NavList: FC<NavListProps> = ({ menuConfiguration }) => {
     },
   };
 
-  const renderEndpoints = (endpoints: Endpoint[]) => (
+  const renderEndpoints = (endpoints: Endpoint[], isOpen: boolean) => (
     <motion.ul
       className={classes.nav__list}
       variants={endpointContainerVariants}
@@ -72,6 +75,10 @@ const NavList: FC<NavListProps> = ({ menuConfiguration }) => {
           <Link
             className={classes.nav__label}
             href={`/resource/${endpoint.alias}`}
+            onKeyDown={(event) =>
+              handleEndpointKeyDown(event, `/resource/${endpoint.alias}`)
+            }
+            tabIndex={isOpen ? 0 : -1}
           >
             {endpoint.category}
           </Link>
@@ -91,18 +98,17 @@ const NavList: FC<NavListProps> = ({ menuConfiguration }) => {
           {subMenu.map((item) => {
             const isOpen =
               item.isOpen ||
-              activeSubCategory?._id?.secondCategory === item._id.secondCategory
-                ? "opened"
-                : "closed";
+              activeSubCategory?._id?.secondCategory ===
+                item._id.secondCategory;
 
             return (
               <motion.li
-                animate={isOpen}
+                animate={isOpen ? "opened" : "closed"}
                 className={cn(
                   classes.nav__item,
                   classes["nav__item--category"]
                 )}
-                initial={isOpen}
+                initial={isOpen ? "opened" : "closed"}
                 key={item._id.secondCategory}
                 onClick={
                   activeSubCategory?._id?.secondCategory !==
@@ -117,10 +123,24 @@ const NavList: FC<NavListProps> = ({ menuConfiguration }) => {
                 }
                 variants={subcategoryVariants}
               >
-                <span className={classes.nav__label}>
+                <span
+                  className={classes.nav__label}
+                  onKeyDown={
+                    activeSubCategory?._id?.secondCategory !==
+                    item._id.secondCategory
+                      ? (event) =>
+                          handleSubCategoryKeyDown(
+                            event,
+                            rootCategoryAlias,
+                            item._id.secondCategory
+                          )
+                      : undefined
+                  }
+                  tabIndex={0}
+                >
                   {item._id.secondCategory}
                 </span>
-                {renderEndpoints(item.pages)}
+                {renderEndpoints(item.pages, isOpen)}
               </motion.li>
             );
           })}
@@ -151,7 +171,15 @@ const NavList: FC<NavListProps> = ({ menuConfiguration }) => {
               : undefined
           }
         >
-          <span className={classes.nav__label}>
+          <span
+            className={classes.nav__label}
+            onKeyDown={
+              activeRootCategory?.alias !== rootItem.alias
+                ? (event) => handleRootCategoryKeyDown(event, rootItem.alias)
+                : undefined
+            }
+            tabIndex={0}
+          >
             {rootItem.icon}
             {rootItem.label}
           </span>
