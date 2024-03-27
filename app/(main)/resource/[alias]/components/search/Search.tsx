@@ -42,7 +42,7 @@ const Search: FC = () => {
   };
 
   return (
-    <label className={classes.search}>
+    <search className={classes.search}>
       <Input
         className={classes.search__input}
         enterKeyHint="search"
@@ -55,7 +55,7 @@ const Search: FC = () => {
         <VisuallyHidden>Поиск</VisuallyHidden>
         <Image alt="" height={13} src="/search.svg" width={13} />
       </Button>
-    </label>
+    </search>
   );
 };
 

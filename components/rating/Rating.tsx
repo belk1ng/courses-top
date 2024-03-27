@@ -17,6 +17,7 @@ const Rating = forwardRef<HTMLDivElement, RatingProps>(
     ref: ForwardedRef<HTMLDivElement>
   ) => {
     const [localRating, setLocalRating] = useState(rating);
+
     useEffect(() => {
       setLocalRating(rating);
     }, [rating]);
@@ -45,6 +46,7 @@ const Rating = forwardRef<HTMLDivElement, RatingProps>(
 
     return (
       <div {...rest} ref={ref}>
+        <VisuallyHidden>{`Рейтинг: ${localRating} из ${ratingMax}`}</VisuallyHidden>
         {new Array(ratingMax).fill(null).map((_, index) => (
           <button
             className={cn(classes.star, {

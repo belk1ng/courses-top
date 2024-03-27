@@ -1,7 +1,7 @@
 "use client";
 
 import cn from "classnames";
-import { useEffect, useState, useRef } from "react";
+import { useState } from "react";
 import type { FC } from "react";
 import { Controller, useForm } from "react-hook-form";
 
@@ -38,20 +38,6 @@ const ReviewForm: FC<ReviewFormProps> = ({
 
   const [isAlertVisible, setAlertVisible] = useState(false);
 
-  const formRef = useRef<HTMLFormElement | null>(null);
-
-  useEffect(() => {
-    if (!isAlertVisible) {
-      setReviewCreatedSuccessfully(null);
-    }
-  }, [isAlertVisible]);
-
-  useEffect(() => {
-    if (opened) {
-      formRef.current?.focus();
-    }
-  }, [opened]);
-
   const onSubmit = async (data: ReviewFormValues) => {
     try {
       await ReviewApi.createReview({ ...data, productId });
@@ -65,84 +51,90 @@ const ReviewForm: FC<ReviewFormProps> = ({
     }
   };
 
-  return (
-    <section>
-      <form
-        className={cn(className, classes.form)}
-        onSubmit={handleSubmit(onSubmit)}
-        ref={formRef}
-        tabIndex={opened ? 0 : -1}
-        {...rest}
-      >
-        <Input
-          {...register("name", {
-            required: { value: true, message: "Заполните имя" },
-          })}
-          className={classes.form__name}
-          error={formState.errors.name?.message}
-          placeholder="Имя"
-          tabIndex={opened ? 0 : -1}
-        />
-        <Input
-          {...register("title", {
-            required: { value: true, message: "Заполните заголовок" },
-          })}
-          className={classes.form__title}
-          error={formState.errors.title?.message}
-          placeholder="Заголовок отзыва"
-          tabIndex={opened ? 0 : -1}
-        />
-        <div
-          className={cn(classes.form__rating, {
-            [classes["form__rating--error"]]: formState.errors.rating?.message,
-          })}
+  if (reviewCreatedSuccessfully === null) {
+    return (
+      <section>
+        <form
+          className={cn(className, classes.form)}
+          onSubmit={handleSubmit(onSubmit)}
+          {...rest}
         >
-          <Typography size={14}>Оценка:</Typography>
-          <Controller
-            control={control}
-            name="rating"
-            render={({ field }) => (
-              <Rating
-                error={formState.errors.rating?.message}
-                rating={field.value}
-                readonly={!opened}
-                ref={field.ref}
-                setRating={field.onChange}
-              />
-            )}
-            rules={{
-              required: {
-                value: true,
-                message: "Укажите рейтинг",
-              },
-            }}
-          />
-        </div>
-        <Textarea
-          {...register("description", {
-            required: { value: true, message: "Заполните описание" },
-          })}
-          className={classes.form__area}
-          error={formState.errors.description?.message}
-          placeholder="Текст отзыва"
-          rows={5}
-          tabIndex={opened ? 0 : -1}
-        />
-        <div className={classes.form__submit}>
-          <Button
-            className={classes.form__button}
-            disabled={formState.isSubmitting}
+          <Input
+            {...register("name", {
+              required: { value: true, message: "Заполните имя" },
+            })}
+            className={classes.form__name}
+            error={formState.errors.name?.message}
+            placeholder="Имя"
             tabIndex={opened ? 0 : -1}
-            type="submit"
+          />
+          <Input
+            {...register("title", {
+              required: { value: true, message: "Заполните заголовок" },
+            })}
+            className={classes.form__title}
+            error={formState.errors.title?.message}
+            placeholder="Заголовок отзыва"
+            tabIndex={opened ? 0 : -1}
+          />
+          <div
+            className={cn(classes.form__rating, {
+              [classes["form__rating--error"]]:
+                formState.errors.rating?.message,
+            })}
           >
-            Отправить
-          </Button>
-          <Typography size={14}>
-            * Перед публикацией отзыв пройдет предварительную модерацию и
-            проверку
-          </Typography>
-        </div>
-      </form>
+            <Typography size={14}>Оценка:</Typography>
+            <Controller
+              control={control}
+              name="rating"
+              render={({ field }) => (
+                <Rating
+                  error={formState.errors.rating?.message}
+                  rating={field.value}
+                  readonly={!opened}
+                  ref={field.ref}
+                  setRating={field.onChange}
+                />
+              )}
+              rules={{
+                required: {
+                  value: true,
+                  message: "Укажите рейтинг",
+                },
+              }}
+            />
+          </div>
+          <Textarea
+            {...register("description", {
+              required: { value: true, message: "Заполните описание" },
+            })}
+            className={classes.form__area}
+            error={formState.errors.description?.message}
+            placeholder="Текст отзыва"
+            rows={5}
+            tabIndex={opened ? 0 : -1}
+          />
+          <div className={classes.form__submit}>
+            <Button
+              className={classes.form__button}
+              disabled={formState.isSubmitting}
+              tabIndex={opened ? 0 : -1}
+              type="submit"
+            >
+              Отправить
+            </Button>
+            <Typography size={14}>
+              * Перед публикацией отзыв пройдет предварительную модерацию и
+              проверку
+            </Typography>
+          </div>
+        </form>
+      </section>
+    );
+  }
+
+  return (
+    <>
       <Alert
         className={classes.form__alert}
         onClose={setAlertVisible}
@@ -159,7 +151,7 @@ const ReviewForm: FC<ReviewFormProps> = ({
         variant="error"
         visible={isAlertVisible && reviewCreatedSuccessfully === false}
       />
-    </section>
+    </>
   );
 };
 

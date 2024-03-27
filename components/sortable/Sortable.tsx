@@ -4,8 +4,6 @@ import cn from "classnames";
 import Image from "next/image";
 import type { FC } from "react";
 
-import Typography from "@/components/typography";
-
 import classes from "./Sortable.module.css";
 import type { SortableProps } from "./Sortable.props";
 import { SortableValues } from "./Sortable.props";
@@ -46,15 +44,15 @@ const Sortable: FC<SortableProps> = ({
           key={label}
           onClick={() => setSort(action)}
         >
-          {field === fieldId && (
-            <Image alt="" height={24} src="/descOrder.svg" width={24} />
-          )}
           <button
             className={cn(classes.sortable__field, {
               [classes["sortable__field--active"]]: field === fieldId,
             })}
             onClick={() => setSort(action)}
           >
+            {field === fieldId && (
+              <Image alt="" height={24} src="/descOrder.svg" width={24} />
+            )}
             {label}
           </button>
         </li>

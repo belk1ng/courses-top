@@ -19,6 +19,7 @@ import numberFormat from "@/utils/numberFormat";
 
 import classes from "./Product.module.css";
 import type { ProductProps } from "./Product.props";
+import VisuallyHidden from "../visually-hidden";
 
 const Product: FC<ProductProps & MotionProps> = ({
   record,
@@ -38,6 +39,7 @@ const Product: FC<ProductProps & MotionProps> = ({
           behavior: "smooth",
           block: "start",
         });
+        reviewsRef.current.focus({ preventScroll: true });
       }
     });
   };
@@ -73,18 +75,23 @@ const Product: FC<ProductProps & MotionProps> = ({
           {record.title}
         </Heading>
         <section className={classes.product__price}>
-          <Typography>{numberFormat(record.price)} ₽</Typography>
+          <div>
+            <VisuallyHidden>Цена: </VisuallyHidden>
+            <Typography>{numberFormat(record.price)} ₽</Typography>
+          </div>
           {record.oldPrice && (
             <Tag
               className={classes["product__price--tag"]}
               color="success"
               size="small"
             >
+              <VisuallyHidden>Скидка: </VisuallyHidden>
               {numberFormat(record.price - record.oldPrice)} ₽
             </Tag>
           )}
         </section>
         <Typography className={classes.product__credit}>
+          <VisuallyHidden>Кредит: </VisuallyHidden>
           {numberFormat(record.credit)} ₽/
           <span className={classes.product__month}>мес</span>
         </Typography>
@@ -100,10 +107,16 @@ const Product: FC<ProductProps & MotionProps> = ({
             </li>
           ))}
         </ul>
-        <Typography className={classes["product__price-title"]}>
+        <Typography
+          aria-hidden={true}
+          className={classes["product__price-title"]}
+        >
           цена
         </Typography>
-        <Typography className={classes["product__credit-title"]}>
+        <Typography
+          aria-hidden={true}
+          className={classes["product__credit-title"]}
+        >
           в кредит
         </Typography>
         <button
@@ -116,6 +129,7 @@ const Product: FC<ProductProps & MotionProps> = ({
             "отзыва",
             "отзывов",
           ])}
+          <VisuallyHidden>Ознакомиться</VisuallyHidden>
         </button>
         <hr className={classes.product__divider} />
         <Typography className={classes.product__description}>
@@ -194,6 +208,7 @@ const Product: FC<ProductProps & MotionProps> = ({
         animate={reviewsOpen ? "visible" : "hidden"}
         initial="hidden"
         ref={reviewsRef}
+        tabIndex={reviewsOpen ? 0 : -1}
         variants={reviewsVariants}
       >
         <Reviews
