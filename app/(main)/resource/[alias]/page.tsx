@@ -1,21 +1,37 @@
 import parse from "html-react-parser";
+import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import type { FC } from "react";
 
-import { NAV_CONFIG } from "@/app/(main)/components/nav/nav.config";
-import SortableProducts from "@/app/(main)/resource/[alias]/components/sortable-products";
 import ProductApi from "@/lib/Product.api";
 import TopPageApi from "@/lib/TopPage.api";
 
 import Advantages from "./components/advantages";
 import HeadHunter from "./components/head-hunter";
 import Skills from "./components/skills";
+import SortableProducts from "./components/sortable-products";
 import classes from "./Page.module.css";
 import type { ProductsPageProps } from "./page.props";
+import { NAV_CONFIG } from "../../components/nav/nav.config";
 
-export const metadata = {
-  description: "Описание продуктов",
-  title: "Продукты по алиасу",
+export const generateMetadata = async ({
+  params,
+}: ProductsPageProps): Promise<Metadata> => {
+  const page = await TopPageApi.getPageDetailsByAlias(params.alias);
+
+  const title = ["CoursesTop", page?.metaTitle ?? ""].join(" | ");
+  const description =
+    page?.metaDescription ??
+    `Какое-то информативное описание для раздела ${params.alias}.`;
+
+  return {
+    title,
+    description,
+    openGraph: {
+      title,
+      description,
+    },
+  };
 };
 
 const ProductsPage: FC<ProductsPageProps> = async ({ params }) => {

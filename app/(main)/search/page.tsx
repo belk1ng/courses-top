@@ -5,8 +5,12 @@ import Heading from "@/components/heading";
 import type { SearchPageProps } from "./page.props";
 
 export const metadata = {
-  title: "Поиск",
+  title: "Результаты поиска",
   description: "Описание страницы поиска",
+  openGraph: {
+    title: "Результаты поиска",
+    description: "Описание страницы поиска",
+  },
 };
 
 const SearchPage: FC<SearchPageProps> = ({ searchParams }) => {

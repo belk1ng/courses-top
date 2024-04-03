@@ -9,8 +9,14 @@ import Textarea from "@/components/textarea";
 import Typography from "@/components/typography";
 
 export const metadata: Metadata = {
-  title: "Тайтл первой страницы",
-  description: "Описание первой страницы",
+  title: "UI-kit проекта",
+  description: "UI-kit проекта Courses Top",
+  openGraph: {
+    title: "UI-kit проекта",
+    description: "UI-kit проекта Courses Top",
+    locale: "ru_RU",
+    type: "article",
+  },
 };
 
 export const viewport: Viewport = {
@@ -22,7 +28,9 @@ export const viewport: Viewport = {
 const Home = () => {
   return (
     <section>
-      <Heading as="h1">Hello world :)</Heading>
+      <Heading as="h1">Заголовок первого уровня</Heading>
+      <Heading as="h2">Заголовок второго уровня</Heading>
+      <Heading as="h3">Заголовок третьего уровня</Heading>
       <Button>Кнопка 1</Button>
       <Button variant="outlined">Кнопка 2</Button>
       <Typography size={14}>Текст 14</Typography>
