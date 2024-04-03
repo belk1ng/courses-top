@@ -7,8 +7,9 @@ the best CSS practices regarding adaptive layout and BEM-naming, which I was abl
 - Next.js 14
 - TypeScript
 - Framer-Motion
+- Docker
 
-## Installation
+## Installation and run dev mode
 ```bash
 git clone https://github.com/belk1ng/courses-top.git
 cd courses-top
@@ -16,6 +17,13 @@ npm i
 npm run dev
 ```
 
-## Screenshot
+## Docker start
+```bash
+git clone https://github.com/belk1ng/courses-top.git
+cd courses-top
+docker compose up -d
+```
+
+## Preview
 ![Screenshot](./screenshot.png)
 
