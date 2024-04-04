@@ -77,12 +77,15 @@
 
 .product__rating-title {
   cursor: pointer;
+
   grid-area: rating-title;
-  color: var(--primary);
-  border: 0;
-  background-color: unset;
   align-self: start;
+
+  color: var(--primary);
   text-align: left;
+
+  background-color: unset;
+  border: 0;
 }
 
 .product__description {
