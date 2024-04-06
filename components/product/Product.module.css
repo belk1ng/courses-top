@@ -148,6 +148,11 @@
   grid-area: hr-2;
 }
 
+.product__button--link {
+  width: 100%;
+  text-decoration: none;
+}
+
 .characteristic {
   display: flex;
   gap: 1em;

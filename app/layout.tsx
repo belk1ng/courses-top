@@ -1,5 +1,5 @@
 import cn from "classnames";
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Roboto } from "next/font/google";
 import "./globals.css";
 import type { FC, ReactNode } from "react";
@@ -14,6 +14,12 @@ export const generateMetadata = async (): Promise<Metadata> => {
   return {
     metadataBase: new URL(process.env.NEXT_PUBLIC_URL as string),
   };
+};
+
+export const viewport: Viewport = {
+  initialScale: 1,
+  maximumScale: 1,
+  width: "device-width",
 };
 
 const roboto = Roboto({

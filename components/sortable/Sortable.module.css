@@ -2,9 +2,7 @@
   display: grid;
   grid-gap: 2.6875em;
   grid-template-columns: auto auto;
-
   font-size: 1rem;
-  color: var(--text-primary);
 }
 
 .sortable__item {
@@ -18,6 +16,7 @@
   cursor: pointer;
 
   font-size: inherit;
+  color: var(--text-primary);
 
   background-color: unset;
   border: 0;

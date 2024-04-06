@@ -1,4 +1,4 @@
-import type { Metadata, Viewport } from "next";
+import type { Metadata } from "next";
 
 import Button from "@/components/button";
 import Heading from "@/components/heading";
@@ -17,12 +17,6 @@ export const metadata: Metadata = {
     locale: "ru_RU",
     type: "article",
   },
-};
-
-export const viewport: Viewport = {
-  initialScale: 1,
-  maximumScale: 1,
-  width: "device-width",
 };
 
 const Home = () => {

@@ -193,7 +193,11 @@ const Product: FC<ProductProps & MotionProps> = ({
         <hr className={classes.product__divider} />
         {/*TODO: Make only the section (with Reviews if possible) as client component*/}
         <section className={classes.product__actions}>
-          <Link href={record.link} target="_blank">
+          <Link
+            className={classes["product__button--link"]}
+            href={record.link}
+            target="_blank"
+          >
             <Button className={classes.product__button} variant="contained">
               Узнать подробнее
             </Button>
