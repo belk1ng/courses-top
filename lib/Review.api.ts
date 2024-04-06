@@ -6,7 +6,7 @@ import type {
 
 class ReviewApi {
   static async createReview(reviewValues: CreateReviewRequestParams) {
-    return await http.post<CreateReviewRequestParams, ReviewResponse>(
+    return http.post<CreateReviewRequestParams, ReviewResponse>(
       "/review/create-demo",
       reviewValues
     );

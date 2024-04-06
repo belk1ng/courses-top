@@ -1,13 +1,20 @@
 import cn from "classnames";
+import type { Metadata } from "next";
 import { Roboto } from "next/font/google";
-import "../globals.css";
+import "./globals.css";
 import type { FC, ReactNode } from "react";
 
-import Aside from "@/app/(main)/components/aside";
-import Footer from "@/app/(main)/components/footer";
-import Header from "@/app/(main)/components/header";
+import Aside from "@/app/components/aside";
+import Footer from "@/app/components/footer";
+import Header from "@/app/components/header";
 
 import classes from "./Layout.module.css";
+
+export const generateMetadata = async (): Promise<Metadata> => {
+  return {
+    metadataBase: new URL(process.env.NEXT_PUBLIC_URL as string),
+  };
+};
 
 const roboto = Roboto({
   subsets: ["latin", "cyrillic"],

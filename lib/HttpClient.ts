@@ -1,4 +1,4 @@
-const SECONDS_IN_AN_HOUR = 60 * 60;
+const SECONDS_IN_A_DAY = 60 * 60 * 24;
 
 class HttpClient {
   constructor(private baseURL: string) {}
@@ -14,7 +14,7 @@ class HttpClient {
       },
       ...options,
       next: {
-        revalidate: SECONDS_IN_AN_HOUR,
+        revalidate: SECONDS_IN_A_DAY,
         ...options?.next,
       },
     };

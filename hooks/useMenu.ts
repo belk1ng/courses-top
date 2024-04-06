@@ -2,7 +2,7 @@ import { usePathname, useRouter } from "next/navigation";
 import type { SyntheticEvent, KeyboardEvent } from "react";
 import { useState, useEffect } from "react";
 
-import type { RootCategory } from "@/app/(main)/components/nav/nav-list/NavList.props";
+import type { RootCategory } from "@/app/components/nav/nav-list/NavList.props";
 import spaceOrEnterPressed from "@/utils/spaceOrEnterPressed";
 
 const useMenu = (menuConfiguration: RootCategory[]) => {

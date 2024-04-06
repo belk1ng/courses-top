@@ -4,6 +4,7 @@ import cn from "classnames";
 import type { MotionProps } from "framer-motion";
 import { motion } from "framer-motion";
 import Image from "next/image";
+import Link from "next/link";
 import { useState, useRef } from "react";
 import type { FC } from "react";
 
@@ -192,9 +193,11 @@ const Product: FC<ProductProps & MotionProps> = ({
         <hr className={classes.product__divider} />
         {/*TODO: Make only the section (with Reviews if possible) as client component*/}
         <section className={classes.product__actions}>
-          <Button className={classes.product__button} variant="contained">
-            Узнать подробнее
-          </Button>
+          <Link href={record.link} target="_blank">
+            <Button className={classes.product__button} variant="contained">
+              Узнать подробнее
+            </Button>
+          </Link>
           <Button
             className={classes.product__button}
             onClick={toggleReviews}

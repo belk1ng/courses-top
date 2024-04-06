@@ -54,6 +54,8 @@
 
 .review__image {
   grid-area: image;
+  width: auto;
+  height: auto;
 }
 
 .review .review__name {

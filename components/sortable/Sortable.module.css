@@ -15,9 +15,13 @@
 }
 
 .sortable__field {
+  cursor: pointer;
+
   font-size: inherit;
+
   background-color: unset;
   border: 0;
+
   transition: color var(--transition);
 }
 
@@ -40,6 +44,7 @@
 .sortable__field--active {
   display: flex;
   gap: 0.5em;
+  align-items: center;
   justify-content: center;
 
   font-weight: 700;
