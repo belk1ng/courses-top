@@ -149,7 +149,6 @@
 }
 
 .product__button--link {
-  width: 100%;
   text-decoration: none;
 }
 
@@ -331,5 +330,9 @@
     justify-content: center;
     width: 100%;
     padding: 1.5714em 2em;
+  }
+
+  .product__button--link {
+    width: 100%;
   }
 }
